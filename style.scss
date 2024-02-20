@@ -1,0 +1,399 @@
+@mixin mobile-view {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+
+@mixin tablet-view {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin web-view {
+  @media (min-width: 769px) {
+    @content;
+  }
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #000835;
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  scrollbar-width: none;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+}
+
+.header-container {
+  display: flex;
+  margin: 0 2rem;
+  gap: 10%;
+  align-items: center;
+  height: 10%;
+  width: calc(100% - 2rem);
+
+  .page-info-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    .logo-container {
+      height: 100%;
+      padding: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      #logo-icon {
+        flex: 0 0 5%;
+        color: #fff;
+        font-size: 30px;
+      }
+    }
+
+    .page-title {
+      color: #fff;
+      text-align: center;
+      font-size: 26px;
+      margin-left: 0.5rem;
+      text-wrap: nowrap;
+    }
+  }
+}
+
+.content-container {
+  height: 85%;
+  margin: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  .section-header {
+    padding: 0;
+    margin: 0;
+    color: #fff;
+    font-size: 22px;
+  }
+
+  .weather-container {
+    width: 100%;
+    height: 50%;
+    color: white;
+
+    .main-cities-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+
+      .main-cities-nav {
+        width: 100%;
+        margin: 0 auto;
+        height: fit-content;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        overflow-x: scroll;
+        scrollbar-width: none;
+
+        .city-chip {
+          background-color: transparent;
+          outline: none;
+          border: none;
+          text-align: center;
+          text-wrap: nowrap;
+          border-radius: 20px;
+          width: fit-content;
+          padding: 0.5rem 2rem;
+
+          p {
+            color: #b8b8b8;
+            padding: 0;
+            margin: 0;
+          }
+
+          &.active {
+            background-color: #6153cc;
+
+            p {
+              color: #fff;
+            }
+          }
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+
+      .forecast-container {
+        height: 60%;
+        width: 100%;
+
+        .city-forecast {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-content: center;
+          overflow-x: auto;
+          scrollbar-width: none;
+
+          @include web-view {
+            justify-content: flex-start;
+          }
+
+          .daily-forecast-container {
+            height: 100%;
+            flex: 0 0 35%;
+            display: grid;
+            grid-template-areas:
+              "date"
+              "weathertype"
+              "temperature";
+            grid-template-rows: auto auto auto;
+            justify-content: space-evenly;
+            width: 35%;
+            align-items: center;
+            margin: 0 0.5rem;
+            background-color: #6153cc2d;
+            border-radius: 5%;
+            text-align: center;
+            overflow: hidden;
+
+            @include tablet-view {
+              flex: 0 0 30%;
+            }
+
+            @include web-view {
+              flex: 0 0 20%;
+            }
+
+            &:first-child {
+              margin-left: 0;
+            }
+
+            #forecast-date {
+              grid-area: date;
+              color: #fff;
+              font-size: 20px;
+              margin: 0;
+              padding: 0;
+            }
+
+            #forecast-weather {
+              grid-area: weathertype;
+              font-weight: 600;
+              font-size: 45px;
+              justify-self: center;
+
+              @include tablet-view {
+                font-size: 60px;
+              }
+
+              @include web-view {
+                font-size: 75px;
+              }
+            }
+
+            #forecast-temp {
+              grid-area: temperature;
+              color: #fff;
+              font-size: 16px;
+              margin: 0;
+              padding: 0;
+            }
+          }
+        }
+      }
+    }
+
+    .popup-container {
+      height: calc(100% - 2rem);
+      width: calc(100% - 2rem);
+      background-color: #6153cc;
+      padding: 1rem 1rem;
+      border-radius: 5px;
+
+      .popup-loading-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .loading-icon {
+          font-weight: 600;
+          font-size: 60px;
+        }
+
+        p {
+          font-size: 18px;
+        }
+      }
+
+      .popup-forecast-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .popup-header {
+          display: flex;
+          width: 100%;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+
+          #close-popup-button {
+            font-size: 24px;
+            color: #fff;
+          }
+        }
+
+        .city-forecast {
+          width: 100%;
+          height: 80%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-content: center;
+          overflow-x: auto;
+          scrollbar-width: none;
+
+          @include web-view {
+            justify-content: flex-start;
+          }
+
+          .daily-forecast-container {
+            height: 100%;
+            flex: 0 0 35%;
+            display: grid;
+            grid-template-areas:
+              "date"
+              "weathertype"
+              "temperature";
+            grid-template-rows: auto auto auto;
+            justify-content: space-evenly;
+            width: 35%;
+            align-items: center;
+            margin: 0 0.5rem;
+            background-color: #252866;
+            border-radius: 5%;
+            text-align: center;
+            overflow: hidden;
+
+            @include tablet-view {
+              flex: 0 0 30%;
+            }
+
+            @include web-view {
+              flex: 0 0 20%;
+            }
+
+            &:first-child {
+              margin-left: 0;
+            }
+
+            #forecast-date {
+              grid-area: date;
+              color: #fff;
+              font-size: 20px;
+              margin: 0;
+              padding: 0;
+            }
+
+            #forecast-weather {
+              grid-area: weathertype;
+              font-weight: 600;
+              font-size: 45px;
+              justify-self: center;
+
+              @include tablet-view {
+                font-size: 60px;
+              }
+
+              @include web-view {
+                font-size: 75px;
+              }
+            }
+
+            #forecast-temp {
+              grid-area: temperature;
+              color: #fff;
+              font-size: 16px;
+              margin: 0;
+              padding: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.map-container {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  .map-header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+
+    .reset-map-button {
+      background-color: #6153cc;
+      outline: none;
+      border: none;
+      text-align: center;
+      text-wrap: nowrap;
+      border-radius: 20px;
+      width: fit-content;
+      padding: 0.5rem 2rem;
+      p {
+        color: #fff;
+        margin: 0;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .map-view-container {
+    width: 100%;
+    height: 75%;
+
+    #map {
+      height: 100%;
+      width: 100%;
+      border-radius: 5px;
+    }
+  }
+}
+
+.footer-container {
+  height: 5%;
+  grid-area: footer;
+}

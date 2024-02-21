@@ -1,4 +1,4 @@
-import { networkCall } from "./api";
+import fetchWeatherForecast from "./api";
 
 // Toggle visibility of the pop-up
 const mainLocations = document.getElementById("main-cities-container");
@@ -8,13 +8,13 @@ customLocationPopup.style.visibility = "hidden";
 
 // Complete all the network calls for the main cities.
 // Network call for Pretoria
-networkCall("pretoria", "-25.731340", "28.218370");
+fetchWeatherForecast("pretoria", "-25.731340", "28.218370");
 // Network call for Johannesburg
-networkCall("johannesburg", "-26.195246", "28.034088");
+fetchWeatherForecast("johannesburg", "-26.195246", "28.034088");
 // Network call for Durban
-networkCall("durban", "-29.85790000", "31.02920000");
+fetchWeatherForecast("durban", "-29.85790000", "31.02920000");
 // Network call Cape Town
-networkCall("cape-town", "-33.918861", "18.423300");
+fetchWeatherForecast("cape-town", "-33.918861", "18.423300");
 
 // Set the initial view of the map to that of South Africa.
 const map = L.map("map").setView([-28.921631, 25.224609], 4);
@@ -46,7 +46,7 @@ function togglePopup(customLat, customLong) {
     customLocationPopup.style.visibility = "hidden";
   }
 
-  networkCall("custom", customLat, customLong);
+  fetchWeatherForecast("custom", customLat, customLong);
   marker.setLatLng([customLat, customLong]).addTo(map);
   map.setView([customLat, customLong], 8);
   mainLocations.style.visibility = "hidden";

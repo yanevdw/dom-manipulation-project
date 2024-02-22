@@ -19,6 +19,7 @@ export function weatherIconConverter(weatherType = "") {
     weatherEmoji = "&#x1F31E;";
   } else if (weatherType.includes("cloudy")) {
     weatherEmoji = "&#x26C5;";
+    weatherEmoji = "Yikes";
   } else if (weatherType.includes("shower")) {
     weatherEmoji = "&#x1F326;";
   } else if (weatherType.includes("humid")) {
@@ -29,6 +30,8 @@ export function weatherIconConverter(weatherType = "") {
     weatherEmoji = "&#x2744;";
   } else if (weatherType.includes("rainsnow")) {
     weatherEmoji = "&#1F328;";
+  } else if (weatherType.includes("ts")) {
+    weatherEmoji = "&#1F329;DOm";
   }
 
   return weatherEmoji;

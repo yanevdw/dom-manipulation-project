@@ -18,8 +18,11 @@ export default function fetchWeatherForecast(
     })
     .then((jsonResponse) => {
       try {
-        const jsonValue = JSON.parse(jsonResponse);
+        let jsonValue = jsonResponse;
+        if (typeof jsonResponse === 'string' || jsonResponse instanceof String) {
+          jsonValue = JSON.parse(jsonResponse);
 
+        }
         // Validating response
         if (!jsonValue?.dataseries) {
           throw new Error(`Invalid response from the API: "${jsonValue}"`);

@@ -1,4 +1,5 @@
 import fetchWeatherForecast from "./api";
+import { loadWeatherForecast, failedForecast, hideForecastLoader } from "./domManipulation";
 
 // Toggle visibility of the pop-up
 const mainLocations = document.getElementById("main-cities-container");
@@ -8,13 +9,13 @@ customLocationPopup.style.visibility = "hidden";
 
 // Complete all the network calls for the main cities.
 // Network call for Pretoria
-fetchWeatherForecast("pretoria", "-25.731340", "28.218370");
+fetchWeatherForecast("pretoria", "-25.731340", "28.218370", loadWeatherForecast, failedForecast, hideForecastLoader);
 // Network call for Johannesburg
-fetchWeatherForecast("johannesburg", "-26.195246", "28.034088");
+fetchWeatherForecast("johannesburg", "-26.195246", "28.034088", loadWeatherForecast, failedForecast, hideForecastLoader);
 // Network call for Durban
-fetchWeatherForecast("durban", "-29.85790000", "31.02920000");
+fetchWeatherForecast("durban", "-29.85790000", "31.02920000", loadWeatherForecast, failedForecast, hideForecastLoader);
 // Network call Cape Town
-fetchWeatherForecast("cape-town", "-33.918861", "18.423300");
+fetchWeatherForecast("cape-town", "-33.918861", "18.423300", loadWeatherForecast, failedForecast, hideForecastLoader);
 
 // Set the initial view of the map to that of South Africa.
 const map = L.map("map").setView([-28.921631, 25.224609], 4);
@@ -42,11 +43,17 @@ const marker = L.marker([-25.73134, 28.21837]).addTo(map);
 
 // Controls the pop-up for when a user selects a location on the map;
 function togglePopup(customLat, customLong) {
+
+  document.getElementById("popup-loading-container").style.visibility = "visible";
+  document.getElementById("popup-loading-container").style.display = "flex";
+  document.getElementById("popup-forecast-container").style.visibility = "hidden";
+  document.getElementById("popup-forecast-container").style.display = "none";
+  
   if (customLocationPopup.style.visibility === "visible") {
     customLocationPopup.style.visibility = "hidden";
   }
 
-  fetchWeatherForecast("custom", customLat, customLong);
+  fetchWeatherForecast("custom", customLat, customLong, loadWeatherForecast, failedForecast, hideForecastLoader);
   marker.setLatLng([customLat, customLong]).addTo(map);
   map.setView([customLat, customLong], 8);
   mainLocations.style.visibility = "hidden";

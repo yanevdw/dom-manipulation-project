@@ -109,9 +109,8 @@ body {
         gap: 0.6rem;
         scrollbar-width: none;
         margin-bottom: 0.5rem;
-        
+
         .city-chip {
-         
           background-color: #6153cc22;
           outline: none;
           border: none;
@@ -132,11 +131,10 @@ body {
             cursor: pointer;
           }
         }
-        
+
         @include tablet-view {
           justify-content: flex-start;
           gap: 1rem;
-          
         }
 
         @include web-view {
@@ -208,6 +206,7 @@ body {
               font-weight: 600;
               font-size: 60px;
               justify-self: center;
+              align-self: center;
 
               @include tablet-view {
                 font-size: 60px;
@@ -224,6 +223,18 @@ body {
               font-size: 16px;
               margin: 0;
               padding: 0;
+              display: flex;
+              flex-direction: column;
+              gap: 10%;
+              height: 100%;
+
+              #min-temp-container,
+              #max-temp-container {
+                margin: 0;
+                border-radius: 15px;
+                padding: 0.3rem 0.4rem;
+                height: fit-content;
+              }
             }
           }
         }
@@ -236,6 +247,11 @@ body {
       background-color: #6153cc;
       padding: 1rem 1rem;
       border-radius: 5px;
+
+      .popup-forecast-header {
+        font-weight: 500;
+        font-size: 16px;
+      }
 
       .popup-loading-container {
         width: 100%;
@@ -332,7 +348,7 @@ body {
             #forecast-weather {
               grid-area: weathertype;
               font-weight: 600;
-              font-size: 45px;
+              font-size: 60px;
               justify-self: center;
 
               @include tablet-view {
@@ -350,6 +366,18 @@ body {
               font-size: 16px;
               margin: 0;
               padding: 0;
+              display: flex;
+              flex-direction: column;
+              gap: 10%;
+              height: 100%;
+
+              #min-temp-container,
+              #max-temp-container {
+                margin: 0;
+                border-radius: 15px;
+                padding: 0.3rem 0.4rem;
+                height: fit-content;
+              }
             }
           }
         }

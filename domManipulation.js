@@ -19,7 +19,6 @@ export function weatherIconConverter(weatherType = "") {
     weatherEmoji = "&#x1F31E;";
   } else if (weatherType.includes("cloudy")) {
     weatherEmoji = "&#x26C5;";
-    weatherEmoji = "Yikes";
   } else if (weatherType.includes("shower")) {
     weatherEmoji = "&#x1F326;";
   } else if (weatherType.includes("humid")) {
@@ -29,15 +28,43 @@ export function weatherIconConverter(weatherType = "") {
   } else if (weatherType.includes("snow")) {
     weatherEmoji = "&#x2744;";
   } else if (weatherType.includes("rainsnow")) {
-    weatherEmoji = "&#1F328;";
+    weatherEmoji = "&#x1F328;";
   } else if (weatherType.includes("ts")) {
-    weatherEmoji = "&#1F329;DOm";
+    weatherEmoji = "&#x1F329;";
   }
 
   return weatherEmoji;
 }
 
+function temperatureColourConverter(temp) {
+  switch (true) {
+    case (temp < 0):
+      return "#1818d7";
+    case (temp < 10):
+      return "#0e7ccb";
+    case (temp < 20):
+      return "#03a3d9";
+    case (temp < 30):
+      return "#338a5a";
+    case (temp < 40):
+      return "#d38e0e";
+    case (temp < 50):
+      return "#ff0000";
+    default:
+      return "#6153cc";
+  }
+
+}
+
 export function loadWeatherForecast(location, fetchResults) {
+
+  // Showing the loader for the popup first.
+  
+  document.getElementById("popup-loading-container").style.visibility = "visible";
+  document.getElementById("popup-loading-container").style.display = "flex";
+  document.getElementById("popup-forecast-container").style.visibility = "hidden";
+  document.getElementById("popup-forecast-container").style.display = "none";
+  
   const containerID = `${location}-container`;
   const cityForecast = document.getElementById(containerID);
 
@@ -83,9 +110,35 @@ export function loadWeatherForecast(location, fetchResults) {
         } else if (i === 1) {
           forecastItemInfo.innerHTML = weatherIconConverter(weatherResult);
         } else if (i === 2) {
-          forecastItemInfo.innerText = `${minTempResult} °C / ${maxTempResult} °C`;
+
+          const tempList = forecastItemInfo.getElementsByTagName("div");
+          tempList[0].innerText = `${minTempResult} °C`;
+          console.log(tempList[0].innerText);
+          tempList[0].style.backgroundColor = temperatureColourConverter(minTempResult);
+          tempList[1].innerText = `${maxTempResult} °C`;
+          tempList[1].style.backgroundColor = temperatureColourConverter(maxTempResult);
         }
       }
     }
   }
+}
+
+// Controls what happens when the network call has been unsuccessful.
+export function failedForecast(location) {
+  console.error(`Unable to fetch the forecast for the ${location} location`);
+  document.getElementById("popup-text").innerText = "Unable to fetch forecast";
+
+}
+
+// Hides the loader after the network call has been completed.
+export function hideForecastLoader(location) {
+
+  if (location === "custom")
+  {
+    document.getElementById("popup-loading-container").style.visibility = "hiddem";
+    document.getElementById("popup-loading-container").style.display = "none";
+    document.getElementById("popup-forecast-container").style.visibility = "visible";
+    document.getElementById("popup-forecast-container").style.display = "flex";
+  }
+  
 }

@@ -47,7 +47,7 @@ export default function fetchWeatherForecast(
     })
     .finally(() => {
       if (callbackFinally) {
-        callbackFinally();
+        callbackFinally(location);
       }
       console.log("Network call has been completed.");
     });

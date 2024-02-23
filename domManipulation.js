@@ -38,38 +38,40 @@ export function weatherIconConverter(weatherType = "") {
 
 function temperatureColourConverter(temp) {
   switch (true) {
-    case (temp < 0):
+    case temp < 0:
       return "#1818d7";
-    case (temp < 10):
+    case temp < 10:
       return "#0e7ccb";
-    case (temp < 20):
+    case temp < 20:
       return "#03a3d9";
-    case (temp < 30):
+    case temp < 30:
       return "#338a5a";
-    case (temp < 40):
+    case temp < 40:
       return "#d38e0e";
-    case (temp < 50):
+    case temp < 50:
       return "#ff0000";
     default:
       return "#6153cc";
   }
-
 }
 
 export function loadWeatherForecast(location, fetchResults) {
-
   // Showing the loader for the popup first.
-  
-  document.getElementById("popup-loading-container").style.visibility = "visible";
+
+  document.getElementById("popup-loading-container").style.visibility =
+    "visible";
   document.getElementById("popup-loading-container").style.display = "flex";
-  document.getElementById("popup-forecast-container").style.visibility = "hidden";
+  document.getElementById("popup-forecast-container").style.visibility =
+    "hidden";
   document.getElementById("popup-forecast-container").style.display = "none";
-  
+
   const containerID = `${location}-container`;
   const cityForecast = document.getElementById(containerID);
 
   if (cityForecast != null) {
-    const cityDailyForecast = cityForecast.getElementsByClassName("daily-forecast-container");
+    const cityDailyForecast = cityForecast.getElementsByClassName(
+      "daily-forecast-container"
+    );
 
     for (const result of fetchResults) {
       let forecastItemContent = "";
@@ -89,14 +91,36 @@ export function loadWeatherForecast(location, fetchResults) {
       }
       const dailyForecast = cityDailyForecast[fetchResults.indexOf(result)];
 
-      const dateResult = forecastItemContent.substring(4, forecastItemContent.indexOf(","));
-      forecastItemContent = forecastItemContent.substring(forecastItemContent.indexOf(",") + 1, forecastItemContent.length);
-      const weatherResult = forecastItemContent.substring(0, forecastItemContent.indexOf(","));
-      forecastItemContent = forecastItemContent.substring(forecastItemContent.indexOf(",") + 1, forecastItemContent.length);
-      const maxTempResult = forecastItemContent.substring(0, forecastItemContent.indexOf(","));
-      forecastItemContent = forecastItemContent.substring(forecastItemContent.indexOf(",") + 1, forecastItemContent.length);
-      const minTempResult = forecastItemContent.substring(0, forecastItemContent.indexOf(","));
-      const forecastItemsList = dailyForecast.getElementsByClassName("forecast-item-info");
+      const dateResult = forecastItemContent.substring(
+        4,
+        forecastItemContent.indexOf(",")
+      );
+      forecastItemContent = forecastItemContent.substring(
+        forecastItemContent.indexOf(",") + 1,
+        forecastItemContent.length
+      );
+      const weatherResult = forecastItemContent.substring(
+        0,
+        forecastItemContent.indexOf(",")
+      );
+      forecastItemContent = forecastItemContent.substring(
+        forecastItemContent.indexOf(",") + 1,
+        forecastItemContent.length
+      );
+      const maxTempResult = forecastItemContent.substring(
+        0,
+        forecastItemContent.indexOf(",")
+      );
+      forecastItemContent = forecastItemContent.substring(
+        forecastItemContent.indexOf(",") + 1,
+        forecastItemContent.length
+      );
+      const minTempResult = forecastItemContent.substring(
+        0,
+        forecastItemContent.indexOf(",")
+      );
+      const forecastItemsList =
+        dailyForecast.getElementsByClassName("forecast-item-info");
 
       for (let i = 0; i < forecastItemsList.length; i++) {
         const forecastItemInfo = forecastItemsList[i];
@@ -110,13 +134,14 @@ export function loadWeatherForecast(location, fetchResults) {
         } else if (i === 1) {
           forecastItemInfo.innerHTML = weatherIconConverter(weatherResult);
         } else if (i === 2) {
-
           const tempList = forecastItemInfo.getElementsByTagName("div");
           tempList[0].innerText = `${minTempResult} °C`;
           console.log(tempList[0].innerText);
-          tempList[0].style.backgroundColor = temperatureColourConverter(minTempResult);
+          tempList[0].style.backgroundColor =
+            temperatureColourConverter(minTempResult);
           tempList[1].innerText = `${maxTempResult} °C`;
-          tempList[1].style.backgroundColor = temperatureColourConverter(maxTempResult);
+          tempList[1].style.backgroundColor =
+            temperatureColourConverter(maxTempResult);
         }
       }
     }
@@ -127,18 +152,16 @@ export function loadWeatherForecast(location, fetchResults) {
 export function failedForecast(location) {
   console.error(`Unable to fetch the forecast for the ${location} location`);
   document.getElementById("popup-text").innerText = "Unable to fetch forecast";
-
 }
 
 // Hides the loader after the network call has been completed.
 export function hideForecastLoader(location) {
-
-  if (location === "custom")
-  {
-    document.getElementById("popup-loading-container").style.visibility = "hiddem";
+  if (location === "custom") {
+    document.getElementById("popup-loading-container").style.visibility =
+      "hiddem";
     document.getElementById("popup-loading-container").style.display = "none";
-    document.getElementById("popup-forecast-container").style.visibility = "visible";
+    document.getElementById("popup-forecast-container").style.visibility =
+      "visible";
     document.getElementById("popup-forecast-container").style.display = "flex";
   }
-  
 }

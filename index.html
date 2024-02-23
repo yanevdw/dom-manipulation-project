@@ -4,18 +4,23 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.scss">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-     crossorigin=""/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="./style.scss" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
 
     <title>Weather Wizard</title>
   </head>
   <body>
     <div id="app">
       <div class="header-container">
-       
         <div class="page-info-container">
           <div class="logo-container">
             <i class="fa-solid fa-bolt-lightning" id="logo-icon"></i>
@@ -24,14 +29,13 @@
         </div>
       </div>
       <div class="content-container">
-
         <div class="weather-container">
           <div class="main-cities-container" id="main-cities-container">
             <h2 class="section-header">Main Cities</h2>
 
-            <div  id='main-cities-nav' class="main-cities-nav">
+            <div id="main-cities-nav" class="main-cities-nav">
               <button class="city-chip">Pretoria</button>
-              <button class="city-chip">Johannesburg</button> 
+              <button class="city-chip">Johannesburg</button>
               <button class="city-chip">Durban</button>
               <button class="city-chip">Cape Town</button>
             </div>
@@ -41,367 +45,576 @@
                 <div class="daily-forecast-container" id="forecast-day-1">
                   <div class="forecast-item-info" id="forecast-date"></div>
                   <div class="forecast-item-info" id="forecast-weather"></div>
-                 <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
                 </div>
 
                 <div class="daily-forecast-container" id="forecast-day-2">
                   <div class="forecast-item-info" id="forecast-date"></div>
                   <div class="forecast-item-info" id="forecast-weather"></div>
-                 <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
                 </div>
 
                 <div class="daily-forecast-container" id="forecast-day-3">
                   <div class="forecast-item-info" id="forecast-date"></div>
                   <div class="forecast-item-info" id="forecast-weather"></div>
-                 <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
                 </div>
 
                 <div class="daily-forecast-container" id="forecast-day-4">
                   <div class="forecast-item-info" id="forecast-date"></div>
                   <div class="forecast-item-info" id="forecast-weather"></div>
-                 <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
                 </div>
 
                 <div class="daily-forecast-container" id="forecast-day-5">
                   <div class="forecast-item-info" id="forecast-date"></div>
                   <div class="forecast-item-info" id="forecast-weather"></div>
-                 <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
                 </div>
 
                 <div class="daily-forecast-container" id="forecast-day-6">
                   <div class="forecast-item-info" id="forecast-date"></div>
                   <div class="forecast-item-info" id="forecast-weather"></div>
-                 <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
                 </div>
 
                 <div class="daily-forecast-container" id="forecast-day-7">
                   <div class="forecast-item-info" id="forecast-date"></div>
                   <div class="forecast-item-info" id="forecast-weather"></div>
-                 <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
                 </div>
+              </div>
+
+              <div id="johannesburg-container" class="city-forecast">
+                <div class="daily-forecast-container" id="forecast-day-1">
+                  <div class="forecast-item-info" id="forecast-date"></div>
+                  <div class="forecast-item-info" id="forecast-weather"></div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
                 </div>
+
+                <div class="daily-forecast-container" id="forecast-day-2">
+                  <div class="forecast-item-info" id="forecast-date"></div>
+                  <div class="forecast-item-info" id="forecast-weather"></div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+
+                <div class="daily-forecast-container" id="forecast-day-3">
+                  <div class="forecast-item-info" id="forecast-date"></div>
+                  <div class="forecast-item-info" id="forecast-weather"></div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+
+                <div class="daily-forecast-container" id="forecast-day-4">
+                  <div class="forecast-item-info" id="forecast-date"></div>
+                  <div class="forecast-item-info" id="forecast-weather"></div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+
+                <div class="daily-forecast-container" id="forecast-day-5">
+                  <div class="forecast-item-info" id="forecast-date"></div>
+                  <div class="forecast-item-info" id="forecast-weather"></div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+
+                <div class="daily-forecast-container" id="forecast-day-6">
+                  <div class="forecast-item-info" id="forecast-date"></div>
+                  <div class="forecast-item-info" id="forecast-weather"></div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+
+                <div class="daily-forecast-container" id="forecast-day-7">
+                  <div class="forecast-item-info" id="forecast-date"></div>
+                  <div class="forecast-item-info" id="forecast-weather"></div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="durban-container" class="city-forecast">
+                <div class="daily-forecast-container" id="forecast-day-1">
+                  <div class="forecast-item-info" id="forecast-date"></div>
+                  <div class="forecast-item-info" id="forecast-weather"></div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+
+                <div class="daily-forecast-container" id="forecast-day-2">
+                  <div class="forecast-item-info" id="forecast-date"></div>
+                  <div class="forecast-item-info" id="forecast-weather"></div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+
+                <div class="daily-forecast-container" id="forecast-day-3">
+                  <div class="forecast-item-info" id="forecast-date"></div>
+                  <div class="forecast-item-info" id="forecast-weather"></div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+
+                <div class="daily-forecast-container" id="forecast-day-4">
+                  <div class="forecast-item-info" id="forecast-date"></div>
+                  <div class="forecast-item-info" id="forecast-weather"></div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+
+                <div class="daily-forecast-container" id="forecast-day-5">
+                  <div class="forecast-item-info" id="forecast-date"></div>
+                  <div class="forecast-item-info" id="forecast-weather"></div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+
+                <div class="daily-forecast-container" id="forecast-day-6">
+                  <div class="forecast-item-info" id="forecast-date"></div>
+                  <div class="forecast-item-info" id="forecast-weather"></div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+
+                <div class="daily-forecast-container" id="forecast-day-7">
+                  <div class="forecast-item-info" id="forecast-date"></div>
+                  <div class="forecast-item-info" id="forecast-weather"></div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="cape-town-container" class="city-forecast">
+                <div class="daily-forecast-container" id="forecast-day-1">
+                  <div class="forecast-item-info" id="forecast-date"></div>
+                  <div class="forecast-item-info" id="forecast-weather"></div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+
+                <div class="daily-forecast-container" id="forecast-day-2">
+                  <div class="forecast-item-info" id="forecast-date"></div>
+                  <div class="forecast-item-info" id="forecast-weather"></div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+
+                <div class="daily-forecast-container" id="forecast-day-3">
+                  <div class="forecast-item-info" id="forecast-date"></div>
+                  <div class="forecast-item-info" id="forecast-weather"></div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+
+                <div class="daily-forecast-container" id="forecast-day-4">
+                  <div class="forecast-item-info" id="forecast-date"></div>
+                  <div class="forecast-item-info" id="forecast-weather"></div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+
+                <div class="daily-forecast-container" id="forecast-day-5">
+                  <div class="forecast-item-info" id="forecast-date"></div>
+                  <div class="forecast-item-info" id="forecast-weather"></div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+
+                <div class="daily-forecast-container" id="forecast-day-6">
+                  <div class="forecast-item-info" id="forecast-date"></div>
+                  <div class="forecast-item-info" id="forecast-weather"></div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+
+                <div class="daily-forecast-container" id="forecast-day-7">
+                  <div class="forecast-item-info" id="forecast-date"></div>
+                  <div class="forecast-item-info" id="forecast-weather"></div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+              </div>
             </div>
-
-            <div id="johannesburg-container" class="city-forecast">
-              <div class="daily-forecast-container" id="forecast-day-1">
-                <div class="forecast-item-info" id="forecast-date"></div>
-                <div class="forecast-item-info" id="forecast-weather"></div>
-               <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
-              </div>
-
-              <div class="daily-forecast-container" id="forecast-day-2">
-                <div class="forecast-item-info" id="forecast-date"></div>
-                <div class="forecast-item-info" id="forecast-weather"></div>
-               <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
-              </div>
-
-              <div class="daily-forecast-container" id="forecast-day-3">
-                <div class="forecast-item-info" id="forecast-date"></div>
-                <div class="forecast-item-info" id="forecast-weather"></div>
-               <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
-              </div>
-
-              <div class="daily-forecast-container" id="forecast-day-4">
-                <div class="forecast-item-info" id="forecast-date"></div>
-                <div class="forecast-item-info" id="forecast-weather"></div>
-               <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
-              </div>
-
-              <div class="daily-forecast-container" id="forecast-day-5">
-                <div class="forecast-item-info" id="forecast-date"></div>
-                <div class="forecast-item-info" id="forecast-weather"></div>
-               <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
-              </div>
-
-              <div class="daily-forecast-container" id="forecast-day-6">
-                <div class="forecast-item-info" id="forecast-date"></div>
-                <div class="forecast-item-info" id="forecast-weather"></div>
-               <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
-              </div>
-
-              <div class="daily-forecast-container" id="forecast-day-7">
-                <div class="forecast-item-info" id="forecast-date"></div>
-                <div class="forecast-item-info" id="forecast-weather"></div>
-               <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
-              </div>
-            </div>
-
-            <div id="durban-container" class="city-forecast">
-              <div class="daily-forecast-container" id="forecast-day-1">
-                <div class="forecast-item-info" id="forecast-date"></div>
-                <div class="forecast-item-info" id="forecast-weather"></div>
-               <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
-              </div>
-
-              <div class="daily-forecast-container" id="forecast-day-2">
-                <div class="forecast-item-info" id="forecast-date"></div>
-                <div class="forecast-item-info" id="forecast-weather"></div>
-               <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
-              </div>
-
-              <div class="daily-forecast-container" id="forecast-day-3">
-                <div class="forecast-item-info" id="forecast-date"></div>
-                <div class="forecast-item-info" id="forecast-weather"></div>
-               <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
-              </div>
-
-              <div class="daily-forecast-container" id="forecast-day-4">
-                <div class="forecast-item-info" id="forecast-date"></div>
-                <div class="forecast-item-info" id="forecast-weather"></div>
-               <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
-              </div>
-
-              <div class="daily-forecast-container" id="forecast-day-5">
-                <div class="forecast-item-info" id="forecast-date"></div>
-                <div class="forecast-item-info" id="forecast-weather"></div>
-               <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
-              </div>
-
-              <div class="daily-forecast-container" id="forecast-day-6">
-                <div class="forecast-item-info" id="forecast-date"></div>
-                <div class="forecast-item-info" id="forecast-weather"></div>
-               <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
-              </div>
-
-              <div class="daily-forecast-container" id="forecast-day-7">
-                <div class="forecast-item-info" id="forecast-date"></div>
-                <div class="forecast-item-info" id="forecast-weather"></div>
-               <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
-              </div>
-            </div>
-
-            <div id="cape-town-container" class="city-forecast">
-              <div class="daily-forecast-container" id="forecast-day-1">
-                <div class="forecast-item-info" id="forecast-date"></div>
-                <div class="forecast-item-info" id="forecast-weather"></div>
-               <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
-              </div>
-
-              <div class="daily-forecast-container" id="forecast-day-2">
-                <div class="forecast-item-info" id="forecast-date"></div>
-                <div class="forecast-item-info" id="forecast-weather"></div>
-               <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
-              </div>
-
-              <div class="daily-forecast-container" id="forecast-day-3">
-                <div class="forecast-item-info" id="forecast-date"></div>
-                <div class="forecast-item-info" id="forecast-weather"></div>
-               <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
-              </div>
-
-              <div class="daily-forecast-container" id="forecast-day-4">
-                <div class="forecast-item-info" id="forecast-date"></div>
-                <div class="forecast-item-info" id="forecast-weather"></div>
-               <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
-              </div>
-
-              <div class="daily-forecast-container" id="forecast-day-5">
-                <div class="forecast-item-info" id="forecast-date"></div>
-                <div class="forecast-item-info" id="forecast-weather"></div>
-               <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
-              </div>
-
-              <div class="daily-forecast-container" id="forecast-day-6">
-                <div class="forecast-item-info" id="forecast-date"></div>
-                <div class="forecast-item-info" id="forecast-weather"></div>
-               <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
-              </div>
-
-              <div class="daily-forecast-container" id="forecast-day-7">
-                <div class="forecast-item-info" id="forecast-date"></div>
-                <div class="forecast-item-info" id="forecast-weather"></div>
-               <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
-              </div> 
-            </div>  
           </div>
-         
-        </div>
 
-        <div class="popup-container" id="popup-container">
-
-          <div class="popup-loading-container" id="popup-loading-container">
+          <div class="popup-container" id="popup-container">
+            <div class="popup-loading-container" id="popup-loading-container">
               <div class="loading-icon">&#129668;</div>
               <p id="popup-text">Fetching forecast...</p>
-          </div>
-          <div class="popup-forecast-container" id="popup-forecast-container">
-            <div class="popup-header">
-              <h2 class="section-header">Custom location</h2>
-              <i class="fa-solid fa-circle-xmark" id="close-popup-button"></i>
             </div>
-            
-            <h4 class="popup-forecast-header">7-day Forecast</h4>
-            <div id="custom-container" class="city-forecast">
-              <div class="daily-forecast-container" id="forecast-day-1">
-                <div class="forecast-item-info" id="forecast-date"></div>
-                <div class="forecast-item-info" id="forecast-weather"></div>
-               <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
+            <div class="popup-forecast-container" id="popup-forecast-container">
+              <div class="popup-header">
+                <h2 class="section-header">Custom location</h2>
+                <i class="fa-solid fa-circle-xmark" id="close-popup-button"></i>
               </div>
-  
-              <div class="daily-forecast-container" id="forecast-day-2">
-                <div class="forecast-item-info" id="forecast-date"></div>
-                <div class="forecast-item-info" id="forecast-weather"></div>
-               <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
-              </div>
-  
-            <div class="daily-forecast-container" id="forecast-day-3">
-              <div class="forecast-item-info" id="forecast-date"></div>
-              <div class="forecast-item-info" id="forecast-weather"></div>
-             <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
-           </div>
-  
-            <div class="daily-forecast-container" id="forecast-day-4">
-              <div class="forecast-item-info" id="forecast-date"></div>
-              <div class="forecast-item-info" id="forecast-weather"></div>
-             <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
-            </div>
-  
-            <div class="daily-forecast-container" id="forecast-day-5">
-              <div class="forecast-item-info" id="forecast-date"></div>
-              <div class="forecast-item-info" id="forecast-weather"></div>
-             <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
-            </div>
-  
-            <div class="daily-forecast-container" id="forecast-day-6">
-              <div class="forecast-item-info" id="forecast-date"></div>
-              <div class="forecast-item-info" id="forecast-weather"></div>
-             <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
-            </div>
-            
-            <div class="daily-forecast-container" id="forecast-day-7">
-              <div class="forecast-item-info" id="forecast-date"></div>
-              <div class="forecast-item-info" id="forecast-weather"></div>
-             <div class="forecast-item-info" id="forecast-temp">
-                  <div class="min-temp-container" id="min-temp-container"></div>
-                  <div class="max-temp-container" id="max-temp-container"></div>
-                </div>
-            </div>
-          </div>
-          </div>
-          
-      </div>
-    </div>
 
-    <div class="map-container">
-      <div class="map-header">
-        <h2 class="section-header">Global Map</h2>
-        <div id="reset-map-button" class="reset-map-button">
-          <p>Reset Map</p>
+              <h4 class="popup-forecast-header">7-day Forecast</h4>
+              <div id="custom-container" class="city-forecast">
+                <div class="daily-forecast-container" id="forecast-day-1">
+                  <div class="forecast-item-info" id="forecast-date"></div>
+                  <div class="forecast-item-info" id="forecast-weather"></div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+
+                <div class="daily-forecast-container" id="forecast-day-2">
+                  <div class="forecast-item-info" id="forecast-date"></div>
+                  <div class="forecast-item-info" id="forecast-weather"></div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+
+                <div class="daily-forecast-container" id="forecast-day-3">
+                  <div class="forecast-item-info" id="forecast-date"></div>
+                  <div class="forecast-item-info" id="forecast-weather"></div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+
+                <div class="daily-forecast-container" id="forecast-day-4">
+                  <div class="forecast-item-info" id="forecast-date"></div>
+                  <div class="forecast-item-info" id="forecast-weather"></div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+
+                <div class="daily-forecast-container" id="forecast-day-5">
+                  <div class="forecast-item-info" id="forecast-date"></div>
+                  <div class="forecast-item-info" id="forecast-weather"></div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+
+                <div class="daily-forecast-container" id="forecast-day-6">
+                  <div class="forecast-item-info" id="forecast-date"></div>
+                  <div class="forecast-item-info" id="forecast-weather"></div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+
+                <div class="daily-forecast-container" id="forecast-day-7">
+                  <div class="forecast-item-info" id="forecast-date"></div>
+                  <div class="forecast-item-info" id="forecast-weather"></div>
+                  <div class="forecast-item-info" id="forecast-temp">
+                    <div
+                      class="min-temp-container"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-container">
+          <div class="map-header">
+            <h2 class="section-header">Global Map</h2>
+            <div id="reset-map-button" class="reset-map-button">
+              <p>Reset Map</p>
+            </div>
+          </div>
+
+          <div class="map-view-container">
+            <div id="map"></div>
+          </div>
         </div>
       </div>
-    
-      <div class="map-view-container">
-        <div id="map"></div>
-      </div>
+
+      <div class="footer-container"></div>
     </div>
-    
-    </div>
-      
-    <div class="footer-container"></div>
-    
+
     <script type="module" src="/main.js"></script>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-    crossorigin=""></script>
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
   </body>
 </html>

@@ -19,9 +19,11 @@ export default function fetchWeatherForecast(
     .then((jsonResponse) => {
       try {
         let jsonValue = jsonResponse;
-        if (typeof jsonResponse === 'string' || jsonResponse instanceof String) {
+        if (
+          typeof jsonResponse === "string" ||
+          jsonResponse instanceof String
+        ) {
           jsonValue = JSON.parse(jsonResponse);
-
         }
         // Validating response
         if (!jsonValue?.dataseries) {

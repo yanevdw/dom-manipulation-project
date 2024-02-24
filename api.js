@@ -50,6 +50,6 @@ export default function fetchWeatherForecast(
       if (callbackFinally) {
         callbackFinally(location);
       }
-      console.log("Network call has been completed.");
+      console.log(`Network call has been completed for ${location}`);
     });
 }

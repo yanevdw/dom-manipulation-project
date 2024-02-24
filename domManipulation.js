@@ -134,12 +134,11 @@ export function loadWeatherForecast(location, fetchResults) {
         } else if (i === 2) {
           const tempList = forecastItemInfo.getElementsByTagName("div");
           tempList[0].innerText = `${minTempResult} °C`;
-          console.log(tempList[0].innerText);
           tempList[0].style.backgroundColor =
-            temperatureColourConverter(minTempResult);
+          temperatureColourConverter(minTempResult);
           tempList[1].innerText = `${maxTempResult} °C`;
           tempList[1].style.backgroundColor =
-            temperatureColourConverter(maxTempResult);
+          temperatureColourConverter(maxTempResult);
         }
       }
     }

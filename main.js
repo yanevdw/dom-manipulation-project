@@ -4,6 +4,12 @@ import {
   failedForecast,
   hideForecastLoader,
 } from "./domManipulation";
+import { 
+  loadMap, 
+  handleMapClick, 
+  resetMap, 
+  loadMarker 
+} from "./map";
 
 // Toggle visibility of the pop-up
 const mainLocations = document.getElementById("main-cities-container");
@@ -50,12 +56,7 @@ fetchWeatherForecast(
 );
 
 // Set the initial view of the map to that of South Africa.
-const map = L.map("map").setView([-28.921631, 25.224609], 4);
-L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  maxZoom: 19,
-  attribution:
-    '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-}).addTo(map);
+const map = loadMap();
 
 // Get the parent element for the main cities/locations which holds all the buttons.
 const mainCities = document.getElementById("main-cities-nav");
@@ -70,11 +71,9 @@ document.getElementById("pretoria-container").style.visibility = "visible";
 document.getElementById("johannesburg-container").style.visibility = "hidden";
 document.getElementById("durban-container").style.visibility = "hidden";
 document.getElementById("cape-town-container").style.visibility = "hidden";
-// Set the initial marker location ot that of Pretoria as this is the default.
-const marker = L.marker([-25.73134, 28.21837]).addTo(map);
 
 // Controls the pop-up for when a user selects a location on the map;
-function togglePopup(customLat, customLong) {
+export function togglePopup(customLat, customLong) {
   document.getElementById("popup-loading-container").style.visibility =
     "visible";
   document.getElementById("popup-loading-container").style.display = "flex";
@@ -94,24 +93,12 @@ function togglePopup(customLat, customLong) {
     failedForecast,
     hideForecastLoader
   );
-  marker.setLatLng([customLat, customLong]).addTo(map);
-  map.setView([customLat, customLong], 8);
+
+  loadMarker(customLat, customLong);
   mainLocations.style.visibility = "hidden";
   mainLocations.style.display = "none";
   customLocationPopup.style.visibility = "visible";
   customLocationPopup.style.display = "flex";
-}
-
-// Controls what happens when user clicks on the map to select own location.
-function handleMapClick(mapClickEvent) {
-  let latLong = mapClickEvent.latlng;
-  latLong = String(latLong);
-  const lat = latLong.substring(latLong.indexOf("(") + 1, latLong.indexOf(","));
-  const long = latLong.substring(
-    latLong.indexOf(",") + 2,
-    latLong.indexOf(")")
-  );
-  togglePopup(lat, long);
 }
 
 // Add a click event to the map to process when a custom or random location is selected on the map.
@@ -142,17 +129,13 @@ function handleClick(numButton) {
 
   // Update the location of the marker.
   if (selectedMainCity === 0) {
-    marker.setLatLng([-25.73134, 28.21837]);
-    map.setView([-25.73134, 28.21837], 8);
+    loadMarker(-25.73134, 28.21837);
   } else if (selectedMainCity === 1) {
-    marker.setLatLng([-26.195246, 28.034088]).addTo(map);
-    map.setView([-26.195246, 28.034088], 8);
+    loadMarker(-26.195246, 28.034088);
   } else if (selectedMainCity === 2) {
-    marker.setLatLng([-29.8579, 31.0292]).addTo(map);
-    map.setView([-29.8579, 31.0292], 8);
+    loadMarker(-29.8579, 31.0292);
   } else if (selectedMainCity === 3) {
-    marker.setLatLng([-33.918861, 18.4233]).addTo(map);
-    map.setView([-33.918861, 18.4233], 8);
+    loadMarker(-33.918861, 18.4233);
   }
 }
 
@@ -169,28 +152,19 @@ function closePopup() {
   customLocationPopup.style.display = "none";
 
   if (selectedMainCity === 0) {
-    marker.setLatLng([-25.73134, 28.21837]);
-    map.setView([-25.73134, 28.21837], 8);
+    loadMarker(-25.73134, 28.21837);
   } else if (selectedMainCity === 1) {
-    marker.setLatLng([-26.195246, 28.034088]).addTo(map);
-    map.setView([-26.195246, 28.034088], 8);
+    loadMarker(-26.195246, 28.034088);
   } else if (selectedMainCity === 2) {
-    marker.setLatLng([-29.8579, 31.0292]).addTo(map);
-    map.setView([-29.8579, 31.0292], 8);
+    loadMarker(-29.8579, 31.0292);
   } else if (selectedMainCity === 3) {
-    marker.setLatLng([-33.918861, 18.4233]).addTo(map);
-    map.setView([-33.918861, 18.4233], 8);
+    loadMarker(-33.918861, 18.4233);
   }
 }
 
 // Add the click event to the close icon to trigger the close function.
 const closePopupButton = document.getElementById("close-popup-button");
 closePopupButton.addEventListener("click", () => closePopup());
-
-// Reset the map to a zoomed-out view of South Africa to make custom selections a bit easier.
-function resetMap() {
-  map.setView([-28.921631, 25.224609], 4);
-}
 
 // Add the click event to the reset button to trigger the reset fucnction.
 const resetMapButton = document.getElementById("reset-map-button");

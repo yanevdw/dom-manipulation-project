@@ -4,7 +4,7 @@ export default function fetchWeatherForecast(
   long,
   callbackSuccess,
   callbackFailure,
-  callbackFinally
+  callbackFinally,
 ) {
   const callURL = `http://www.7timer.info/bin/api.pl?lon=${long}&lat=${lat}&product=civillight&output=json`;
 
@@ -12,16 +12,15 @@ export default function fetchWeatherForecast(
     .then((response) => {
       if (response.headers.get("content-type") === "text/plain") {
         return response.text();
-      } else {
-        return response.json();
       }
+      return response.json();
     })
     .then((jsonResponse) => {
       try {
         let jsonValue = jsonResponse;
         if (
-          typeof jsonResponse === "string" ||
-          jsonResponse instanceof String
+          typeof jsonResponse === "string"
+          || jsonResponse instanceof String
         ) {
           jsonValue = JSON.parse(jsonResponse);
         }
@@ -37,7 +36,7 @@ export default function fetchWeatherForecast(
       } catch (error) {
         throw new Error(
           `Invalid response from the API: "${jsonResponse}"`,
-          error
+          error,
         );
       }
     })

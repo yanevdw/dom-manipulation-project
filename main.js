@@ -4,11 +4,10 @@ import {
   failedForecast,
   hideForecastLoader,
 } from "./domManipulation";
-import { 
-  loadMap, 
-  handleMapClick, 
-  resetMap, 
-  loadMarker 
+import {
+  loadMap,
+  handleMapClick,
+  loadMarker,
 } from "./map";
 
 // Toggle visibility of the pop-up
@@ -25,7 +24,7 @@ fetchWeatherForecast(
   "28.218370",
   loadWeatherForecast,
   failedForecast,
-  hideForecastLoader
+  hideForecastLoader,
 );
 // Network call for Johannesburg
 fetchWeatherForecast(
@@ -34,7 +33,7 @@ fetchWeatherForecast(
   "28.034088",
   loadWeatherForecast,
   failedForecast,
-  hideForecastLoader
+  hideForecastLoader,
 );
 // Network call for Durban
 fetchWeatherForecast(
@@ -43,7 +42,7 @@ fetchWeatherForecast(
   "31.02920000",
   loadWeatherForecast,
   failedForecast,
-  hideForecastLoader
+  hideForecastLoader,
 );
 // Network call Cape Town
 fetchWeatherForecast(
@@ -52,7 +51,7 @@ fetchWeatherForecast(
   "18.423300",
   loadWeatherForecast,
   failedForecast,
-  hideForecastLoader
+  hideForecastLoader,
 );
 
 // Set the initial view of the map to that of South Africa.
@@ -71,35 +70,6 @@ document.getElementById("pretoria-container").style.visibility = "visible";
 document.getElementById("johannesburg-container").style.visibility = "hidden";
 document.getElementById("durban-container").style.visibility = "hidden";
 document.getElementById("cape-town-container").style.visibility = "hidden";
-
-// Controls the pop-up for when a user selects a location on the map;
-export function togglePopup(customLat, customLong) {
-  document.getElementById("popup-loading-container").style.visibility =
-    "visible";
-  document.getElementById("popup-loading-container").style.display = "flex";
-  document.getElementById("popup-forecast-container").style.visibility =
-    "hidden";
-  document.getElementById("popup-forecast-container").style.display = "none";
-
-  if (customLocationPopup.style.visibility === "visible") {
-    customLocationPopup.style.visibility = "hidden";
-  }
-
-  fetchWeatherForecast(
-    "custom",
-    customLat,
-    customLong,
-    loadWeatherForecast,
-    failedForecast,
-    hideForecastLoader
-  );
-
-  loadMarker(customLat, customLong);
-  mainLocations.style.visibility = "hidden";
-  mainLocations.style.display = "none";
-  customLocationPopup.style.visibility = "visible";
-  customLocationPopup.style.display = "flex";
-}
 
 // Add a click event to the map to process when a custom or random location is selected on the map.
 map.on("click", handleMapClick);
@@ -165,7 +135,3 @@ function closePopup() {
 // Add the click event to the close icon to trigger the close function.
 const closePopupButton = document.getElementById("close-popup-button");
 closePopupButton.addEventListener("click", () => closePopup());
-
-// Add the click event to the reset button to trigger the reset fucnction.
-const resetMapButton = document.getElementById("reset-map-button");
-resetMapButton.addEventListener("click", () => resetMap());

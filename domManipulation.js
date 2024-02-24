@@ -3,7 +3,7 @@ import { format } from "date-fns";
 // Get the current date to convert the forecast for the current date to "Today";
 export function getCurrentDate() {
   // Convert to format that matches how the result from the network call has been formulated.
-  return format(new Date(), "MMdd");;
+  return format(new Date(), "MMdd");
 }
 
 // Convert the general weather types to corresponding emojis.
@@ -56,11 +56,9 @@ function temperatureColourConverter(temp) {
 export function loadWeatherForecast(location, fetchResults) {
   // Showing the loader for the popup first.
 
-  document.getElementById("popup-loading-container").style.visibility =
-    "visible";
+  document.getElementById("popup-loading-container").style.visibility = "visible";
   document.getElementById("popup-loading-container").style.display = "flex";
-  document.getElementById("popup-forecast-container").style.visibility =
-    "hidden";
+  document.getElementById("popup-forecast-container").style.visibility = "hidden";
   document.getElementById("popup-forecast-container").style.display = "none";
 
   const containerID = `${location}-container`;
@@ -68,7 +66,7 @@ export function loadWeatherForecast(location, fetchResults) {
 
   if (cityForecast != null) {
     const cityDailyForecast = cityForecast.getElementsByClassName(
-      "daily-forecast-container"
+      "daily-forecast-container",
     );
 
     for (const result of fetchResults) {
@@ -91,34 +89,33 @@ export function loadWeatherForecast(location, fetchResults) {
 
       const dateResult = forecastItemContent.substring(
         4,
-        forecastItemContent.indexOf(",")
+        forecastItemContent.indexOf(","),
       );
       forecastItemContent = forecastItemContent.substring(
         forecastItemContent.indexOf(",") + 1,
-        forecastItemContent.length
+        forecastItemContent.length,
       );
       const weatherResult = forecastItemContent.substring(
         0,
-        forecastItemContent.indexOf(",")
+        forecastItemContent.indexOf(","),
       );
       forecastItemContent = forecastItemContent.substring(
         forecastItemContent.indexOf(",") + 1,
-        forecastItemContent.length
+        forecastItemContent.length,
       );
       const maxTempResult = forecastItemContent.substring(
         0,
-        forecastItemContent.indexOf(",")
+        forecastItemContent.indexOf(","),
       );
       forecastItemContent = forecastItemContent.substring(
         forecastItemContent.indexOf(",") + 1,
-        forecastItemContent.length
+        forecastItemContent.length,
       );
       const minTempResult = forecastItemContent.substring(
         0,
-        forecastItemContent.indexOf(",")
+        forecastItemContent.indexOf(","),
       );
-      const forecastItemsList =
-        dailyForecast.getElementsByClassName("forecast-item-info");
+      const forecastItemsList = dailyForecast.getElementsByClassName("forecast-item-info");
 
       for (let i = 0; i < forecastItemsList.length; i++) {
         const forecastItemInfo = forecastItemsList[i];
@@ -134,11 +131,9 @@ export function loadWeatherForecast(location, fetchResults) {
         } else if (i === 2) {
           const tempList = forecastItemInfo.getElementsByTagName("div");
           tempList[0].innerText = `${minTempResult} °C`;
-          tempList[0].style.backgroundColor =
-          temperatureColourConverter(minTempResult);
+          tempList[0].style.backgroundColor = temperatureColourConverter(minTempResult);
           tempList[1].innerText = `${maxTempResult} °C`;
-          tempList[1].style.backgroundColor =
-          temperatureColourConverter(maxTempResult);
+          tempList[1].style.backgroundColor = temperatureColourConverter(maxTempResult);
         }
       }
     }
@@ -154,11 +149,9 @@ export function failedForecast(location) {
 // Hides the loader after the network call has been completed.
 export function hideForecastLoader(location) {
   if (location === "custom") {
-    document.getElementById("popup-loading-container").style.visibility =
-      "hiddem";
+    document.getElementById("popup-loading-container").style.visibility = "hiddem";
     document.getElementById("popup-loading-container").style.display = "none";
-    document.getElementById("popup-forecast-container").style.visibility =
-      "visible";
+    document.getElementById("popup-forecast-container").style.visibility = "visible";
     document.getElementById("popup-forecast-container").style.display = "flex";
   }
 }

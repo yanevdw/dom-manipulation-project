@@ -1,4 +1,3 @@
-import { togglePopup } from "./main";
 import L from "leaflet";
 
 const map = L.map("map").setView([-28.921631, 25.224609], 4);
@@ -9,9 +8,40 @@ export function loadMap() {
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
     attribution:
-      '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      "&copy; <a href=\"http://www.openstreetmap.org/copyright\">OpenStreetMap</a>",
   }).addTo(map);
   return map;
+}
+export function loadMarker(lat, long) {
+  marker.setLatLng([lat, long]).addTo(map);
+  map.setView([lat, long], 8);
+}
+
+// Controls the pop-up for when a user selects a location on the map;
+export function togglePopup(customLat, customLong) {
+  document.getElementById("popup-loading-container").style.visibility = "visible";
+  document.getElementById("popup-loading-container").style.display = "flex";
+  document.getElementById("popup-forecast-container").style.visibility = "hidden";
+  document.getElementById("popup-forecast-container").style.display = "none";
+
+  if (customLocationPopup.style.visibility === "visible") {
+    customLocationPopup.style.visibility = "hidden";
+  }
+
+  fetchWeatherForecast(
+    "custom",
+    customLat,
+    customLong,
+    loadWeatherForecast,
+    failedForecast,
+    hideForecastLoader,
+  );
+
+  loadMarker(customLat, customLong);
+  mainLocations.style.visibility = "hidden";
+  mainLocations.style.display = "none";
+  customLocationPopup.style.visibility = "visible";
+  customLocationPopup.style.display = "flex";
 }
 
 // Controls what happens when user clicks on the map to select own location.
@@ -21,7 +51,7 @@ export function handleMapClick(mapClickEvent) {
   const lat = latLong.substring(latLong.indexOf("(") + 1, latLong.indexOf(","));
   const long = latLong.substring(
     latLong.indexOf(",") + 2,
-    latLong.indexOf(")")
+    latLong.indexOf(")"),
   );
   togglePopup(lat, long);
 }
@@ -31,7 +61,6 @@ export function resetMap() {
   map.setView([-28.921631, 25.224609], 4);
 }
 
-export function loadMarker(lat, long) {
-  marker.setLatLng([lat, long]).addTo(map);
-  map.setView([lat, long], 8);
-}
+// Add the click event to the reset button to trigger the reset fucnction.
+const resetMapButton = document.getElementById("reset-map-button");
+resetMapButton.addEventListener("click", () => resetMap());

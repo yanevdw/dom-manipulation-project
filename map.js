@@ -1,4 +1,10 @@
 import L from "leaflet";
+import {
+  loadWeatherForecast,
+  failedForecast,
+  hideForecastLoader,
+} from "./domManipulation";
+import fetchWeatherForecast from "./api";
 
 const map = L.map("map").setView([-28.921631, 25.224609], 4);
 // Set the initial marker location ot that of Pretoria as this is the default.
@@ -24,10 +30,6 @@ export function togglePopup(customLat, customLong) {
   document.getElementById("popup-forecast-container").style.visibility = "hidden";
   document.getElementById("popup-forecast-container").style.display = "none";
 
-  if (customLocationPopup.style.visibility === "visible") {
-    customLocationPopup.style.visibility = "hidden";
-  }
-
   fetchWeatherForecast(
     "custom",
     customLat,
@@ -38,10 +40,10 @@ export function togglePopup(customLat, customLong) {
   );
 
   loadMarker(customLat, customLong);
-  mainLocations.style.visibility = "hidden";
-  mainLocations.style.display = "none";
-  customLocationPopup.style.visibility = "visible";
-  customLocationPopup.style.display = "flex";
+  document.getElementById("main-cities-container").style.visibility = "hidden";
+  document.getElementById("main-cities-container").style.display = "none";
+  document.getElementById("popup-container").style.visibility = "visible";
+  document.getElementById("popup-container").style.display = "flex";
 }
 
 // Controls what happens when user clicks on the map to select own location.

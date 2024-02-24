@@ -2,10 +2,8 @@ import { format } from "date-fns";
 
 // Get the current date to convert the forecast for the current date to "Today";
 export function getCurrentDate() {
-  let date = new Date();
   // Convert to format that matches how the result from the network call has been formulated.
-  date = format(date, "MMdd");
-  return date;
+  return format(new Date(), "MMdd");;
 }
 
 // Convert the general weather types to corresponding emojis.

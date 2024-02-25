@@ -1,4 +1,19 @@
 import { format } from "date-fns";
+import { loadMarker } from "./map";
+import fetchWeatherForecast from "./api";
+
+// Get the parent element for the main cities/locations which holds all the buttons.
+const mainCities = document.getElementById("main-cities-nav");
+// Get all the button elements in this parent.
+const mainCityButtons = mainCities.getElementsByClassName("city-chip");
+// Set the default city to the first option.
+let selectedMainCity = 0;
+
+// Toggle visibility of the pop-up
+const mainLocations = document.getElementById("main-cities-container");
+const customLocationPopup = document.getElementById("popup-container");
+mainLocations.style.visibility = "visible";
+customLocationPopup.style.visibility = "hidden";
 
 // Get the current date to convert the forecast for the current date to "Today";
 export function getCurrentDate() {
@@ -8,7 +23,7 @@ export function getCurrentDate() {
 
 // Convert the general weather types to corresponding emojis.
 export function weatherIconConverter(weatherType = "") {
-  let weatherEmoji = "";
+  let weatherEmoji = "&#x1F31E;";
   if (weatherType.includes("clearday")) {
     weatherEmoji = "&#x1F31E;";
   } else if (weatherType.includes("clearnight")) {
@@ -53,13 +68,17 @@ function temperatureColourConverter(temp) {
   }
 }
 
+export function displayForecastLoader(location) {
+  if (location === "custom") {
+    document.getElementById("popup-loading-container").style.visibility = "visible";
+    document.getElementById("popup-loading-container").style.display = "flex";
+    document.getElementById("popup-forecast-container").style.visibility = "hidden";
+    document.getElementById("popup-forecast-container").style.display = "none";
+  }
+}
+
 export function loadWeatherForecast(location, fetchResults) {
   // Showing the loader for the popup first.
-
-  document.getElementById("popup-loading-container").style.visibility = "visible";
-  document.getElementById("popup-loading-container").style.display = "flex";
-  document.getElementById("popup-forecast-container").style.visibility = "hidden";
-  document.getElementById("popup-forecast-container").style.display = "none";
 
   const containerID = `${location}-container`;
   const cityForecast = document.getElementById(containerID);
@@ -154,4 +173,86 @@ export function hideForecastLoader(location) {
     document.getElementById("popup-forecast-container").style.visibility = "visible";
     document.getElementById("popup-forecast-container").style.display = "flex";
   }
+}
+export function handleMainCityClick(numButton) {
+  const forecastDisplay = document.getElementsByClassName("city-forecast");
+  // Remove the active state from the previously selected button.
+  mainCityButtons[selectedMainCity].classList.remove("active");
+  // Update the index of the newly/currently selected button.
+  selectedMainCity = numButton;
+  // Set the newly selected button to active.
+  mainCityButtons[selectedMainCity].classList.add("active");
+
+  // Display forecast for selected city and hide forecasts for other main cities/locations.
+  for (let j = 0; j < forecastDisplay.length; j++) {
+    if (j === selectedMainCity) {
+      // Display corresponding forecast of selected main city.
+      forecastDisplay[j].style.visibility = "visible";
+      forecastDisplay[j].style.display = "flex";
+    } else {
+      // Hide all other cities' information.
+      forecastDisplay[j].style.visibility = "hidden";
+      forecastDisplay[j].style.display = "none";
+    }
+  }
+
+  // Update the location of the marker.
+  if (selectedMainCity === 0) {
+    loadMarker(-25.73134, 28.21837);
+  } else if (selectedMainCity === 1) {
+    loadMarker(-26.195246, 28.034088);
+  } else if (selectedMainCity === 2) {
+    loadMarker(-29.8579, 31.0292);
+  } else if (selectedMainCity === 3) {
+    loadMarker(-33.918861, 18.4233);
+  }
+}
+
+// Controls the pop-up for when a user selects a location on the map;
+export function togglePopup(customLat, customLong) {
+  displayForecastLoader("custom");
+
+  fetchWeatherForecast(
+    "custom",
+    customLat,
+    customLong,
+    loadWeatherForecast,
+    failedForecast,
+    hideForecastLoader,
+  );
+
+  loadMarker(customLat, customLong);
+  document.getElementById("main-cities-container").style.visibility = "hidden";
+  document.getElementById("main-cities-container").style.display = "none";
+  document.getElementById("popup-container").style.visibility = "visible";
+  document.getElementById("popup-container").style.display = "flex";
+}
+
+// Close the popup when the close icon is selected.
+export function closePopup() {
+  mainLocations.style.visibility = "visible";
+  mainLocations.style.display = "flex";
+  customLocationPopup.style.visibility = "hidden";
+  customLocationPopup.style.display = "none";
+
+  if (selectedMainCity === 0) {
+    loadMarker(-25.73134, 28.21837);
+  } else if (selectedMainCity === 1) {
+    loadMarker(-26.195246, 28.034088);
+  } else if (selectedMainCity === 2) {
+    loadMarker(-29.8579, 31.0292);
+  } else if (selectedMainCity === 3) {
+    loadMarker(-33.918861, 18.4233);
+  }
+}
+
+// Controls what happens when user clicks on the map to select own location.
+export function handleMapClick(mapClickEvent) {
+  const latLong = String(mapClickEvent.latlng);
+  const lat = latLong.substring(latLong.indexOf("(") + 1, latLong.indexOf(","));
+  const long = latLong.substring(
+    latLong.indexOf(",") + 2,
+    latLong.indexOf(")"),
+  );
+  togglePopup(lat, long);
 }

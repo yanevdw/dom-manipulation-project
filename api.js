@@ -29,7 +29,6 @@ export default function fetchWeatherForecast(
           throw new Error(`Invalid response from the API: "${jsonValue}"`);
         }
         const forecastResults = jsonValue.dataseries;
-        console.log(forecastResults);
         if (callbackSuccess) {
           callbackSuccess(location, forecastResults);
         }
@@ -50,6 +49,5 @@ export default function fetchWeatherForecast(
       if (callbackFinally) {
         callbackFinally(location);
       }
-      console.log(`Network call has been completed for ${location}`);
     });
 }

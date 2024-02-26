@@ -7,7 +7,7 @@ const mainCities = document.getElementById("main-cities-nav");
 
 // Get all the button elements in this parent.
 let  mainCityButtons : HTMLCollectionOf<Element>;
-if (mainCities) {
+if (mainCities !== null) {
   mainCityButtons = mainCities.getElementsByClassName("city-chip");
 }
 
@@ -17,10 +17,10 @@ let selectedMainCity = 0;
 // Toggle visibility of the pop-up
 const mainLocations = document.getElementById("main-cities-container");
 const customLocationPopup = document.getElementById("popup-container");
-if (mainLocations) {
+if (mainLocations !== null) {
   mainLocations.style.visibility = "visible";
 }
-if (customLocationPopup)
+if (customLocationPopup !== null)
 {
   customLocationPopup.style.visibility = "hidden";
 }
@@ -98,6 +98,7 @@ export function displayForecastLoader(location: string) {
     
   }
 }
+
 interface Temperature {
   max: string,
   min: string
@@ -234,7 +235,7 @@ export function handleMainCityClick(numButton: number) {
   mainCityButtons[selectedMainCity].classList.add("active");
 
   // Display forecast for selected city and hide forecasts for other main cities/locations.
-  if (forecastDisplay) {
+  if (forecastDisplay !== null) {
     for (let j = 0; j < forecastDisplay.length; j++) {
       if (j === selectedMainCity) {
         // Display corresponding forecast of selected main city.
@@ -288,7 +289,7 @@ export function togglePopup(customLat: string, customLong: string) {
   
   const popupDisplay = document.getElementById("popup-container");
 
-  if (popupDisplay) {
+  if (popupDisplay !== null) {
     popupDisplay.style.visibility = "visible";
     popupDisplay.style.display = "flex";
   }

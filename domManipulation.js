@@ -226,6 +226,8 @@ export function togglePopup(customLat, customLong) {
   document.getElementById("main-cities-container").style.display = "none";
   document.getElementById("popup-container").style.visibility = "visible";
   document.getElementById("popup-container").style.display = "flex";
+  document.getElementById("custom-container").style.visibility = "visible";
+  document.getElementById("custom-container").style.display = "flex";
 }
 
 // Close the popup when the close icon is selected.
@@ -248,7 +250,7 @@ export function closePopup() {
 
 // Controls what happens when user clicks on the map to select own location.
 export function handleMapClick(mapClickEvent) {
-  const latLong = String(mapClickEvent.latlng);
+  const latLong = String(mapClickEvent.latlng.wrap());
   const lat = latLong.substring(latLong.indexOf("(") + 1, latLong.indexOf(","));
   const long = latLong.substring(
     latLong.indexOf(",") + 2,

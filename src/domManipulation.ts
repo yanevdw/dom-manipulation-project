@@ -72,21 +72,20 @@ function temperatureColourConverter( temp: number) {
 }
 
 export function displayForecastLoader(location: string) {
+
+  const popupLoader = document.getElementById("popup-loading-container");
+  const popupForecastDisplay = document.getElementById("popup-forecast-container");
   if (location === "custom") {
 
-    const popupLoader = document.getElementById("popup-loading-container");
-
-    if (popupLoader !== null) {
-      popupLoader.style.visibility = "visible";
-      popupLoader.style.display = "flex";
+    if (!popupLoader || !popupForecastDisplay) {
+      return;
     }
+
+    popupLoader.style.visibility = "visible";
+    popupLoader.style.display = "flex";
+    popupForecastDisplay.style.visibility = "hidden";
+    popupForecastDisplay.style.display = "none";
     
-    const popupForecastDisplay = document.getElementById("popup-forecast-container");
-
-    if (popupForecastDisplay !== null) {
-      popupForecastDisplay.style.visibility = "hidden";
-      popupForecastDisplay.style.display = "none";
-    }
     
   }
 }

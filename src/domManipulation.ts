@@ -1,6 +1,7 @@
 import { format } from "date-fns";
 import { loadMarker } from "./map";
 import fetchWeatherForecast from "./api";
+import { LatLng } from "leaflet";
 
 // Get the parent element for the main cities/locations which holds all the buttons.
 const mainCities = document.getElementById("main-cities-nav");
@@ -317,7 +318,7 @@ export function closePopup() {
 }
 
 // Controls what happens when user clicks on the map to select own location.
-export function handleMapClick(mapClickEvent: { latlng: { wrap: () => any; }; }) {
+export function handleMapClick(mapClickEvent: { latlng:  LatLng }) { 
   const latLong = String(mapClickEvent.latlng.wrap());
   const lat = latLong.substring(latLong.indexOf("(") + 1, latLong.indexOf(","));
   const long = latLong.substring(

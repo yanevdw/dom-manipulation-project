@@ -1,7 +1,5 @@
 import { format } from "date-fns";
-import { loadMarker } from "./map";
 import fetchWeatherForecast from "./api";
-import { LatLng } from "leaflet";
 import { Forecast } from "./types/customTypes";
 
 // Get the parent element for the main cities/locations which holds all the buttons.
@@ -204,10 +202,9 @@ export function hideForecastLoader(location: string) {
    
   }
 }
-export function handleMainCityClick(numButton: number) {
+export function handleMainCityClick(numButton: number, callbackMarkerLoad : (lat: number, long: number) => void) {
   const forecastDisplay = document.getElementsByClassName("city-forecast");
   // Remove the active state from the previously selected button.
-
   mainCityButtons[selectedMainCity].classList.remove("active");
   // Update the index of the newly/currently selected button.
   selectedMainCity = numButton;
@@ -235,18 +232,18 @@ export function handleMainCityClick(numButton: number) {
 
   // Update the location of the marker.
   if (selectedMainCity === 0) {
-    loadMarker(-25.73134, 28.21837);
+    callbackMarkerLoad(-25.73134, 28.21837);
   } else if (selectedMainCity === 1) {
-    loadMarker(-26.195246, 28.034088);
+    callbackMarkerLoad(-26.195246, 28.034088);
   } else if (selectedMainCity === 2) {
-    loadMarker(-29.8579, 31.0292);
+    callbackMarkerLoad(-29.8579, 31.0292);
   } else if (selectedMainCity === 3) {
-    loadMarker(-33.918861, 18.4233);
+    callbackMarkerLoad(-33.918861, 18.4233);
   }
 }
 
 // Controls the pop-up for when a user selects a location on the map;
-export function togglePopup(customLat: string, customLong: string) {
+export function fetchPopup(customLat: string, customLong: string) {
   displayForecastLoader("custom");
 
   fetchWeatherForecast(
@@ -257,8 +254,6 @@ export function togglePopup(customLat: string, customLong: string) {
     failedForecast,
     hideForecastLoader,
   );
-
-  loadMarker(Number(customLat), Number(customLong));
 
   const mainCitiesDisplay = document.getElementById("main-cities-container");
   const popupDisplay = document.getElementById("popup-container");
@@ -277,7 +272,7 @@ export function togglePopup(customLat: string, customLong: string) {
 }
 
 // Close the popup when the close icon is selected.
-export function closePopup() {
+export function closePopup(callbackMarkerLoad : (lat: number, long: number) => void) {
 
   if (!mainLocations || !customLocationPopup) {
     return;
@@ -289,23 +284,12 @@ export function closePopup() {
   customLocationPopup.style.display = "none";
    
   if (selectedMainCity === 0) {
-    loadMarker(-25.73134, 28.21837);
+    callbackMarkerLoad(-25.73134, 28.21837);
   } else if (selectedMainCity === 1) {
-    loadMarker(-26.195246, 28.034088);
+    callbackMarkerLoad(-26.195246, 28.034088);
   } else if (selectedMainCity === 2) {
-    loadMarker(-29.8579, 31.0292);
+    callbackMarkerLoad(-29.8579, 31.0292);
   } else if (selectedMainCity === 3) {
-    loadMarker(-33.918861, 18.4233);
+    callbackMarkerLoad(-33.918861, 18.4233);
   }
-}
-
-// Controls what happens when user clicks on the map to select own location.
-export function handleMapClick(mapClickEvent: { latlng:  LatLng }) { 
-  const latLong = String(mapClickEvent.latlng.wrap());
-  const lat = latLong.substring(latLong.indexOf("(") + 1, latLong.indexOf(","));
-  const long = latLong.substring(
-    latLong.indexOf(",") + 2,
-    latLong.indexOf(")"),
-  );
-  togglePopup(lat, long);
 }

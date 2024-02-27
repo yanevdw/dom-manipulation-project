@@ -2,6 +2,7 @@ import { format } from "date-fns";
 import { loadMarker } from "./map";
 import fetchWeatherForecast from "./api";
 import { LatLng } from "leaflet";
+import { Forecast } from "./types/customTypes";
 
 // Get the parent element for the main cities/locations which holds all the buttons.
 const mainCities = document.getElementById("main-cities-nav");
@@ -90,20 +91,6 @@ export function displayForecastLoader(location: string) {
     
   }
 }
-
-interface Temperature {
-  max: string,
-  min: string
-}
-export interface Forecast{
-
-  date: string, 
-  weather: string,
-  temp2m: Temperature,
-
-}
-
-
 
 export function loadWeatherForecast(location: string, fetchResults: Forecast[]) {
   // Showing the loader for the popup first.
@@ -278,7 +265,7 @@ export function togglePopup(customLat: string, customLong: string) {
   if (!mainCitiesDisplay || !popupDisplay || !customForecastDisplay) {
     return;
   }
-  
+
   mainCitiesDisplay.style.visibility = "hidden";
   mainCitiesDisplay.style.display = "none";
   popupDisplay.style.visibility = "visible";

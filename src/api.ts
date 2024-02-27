@@ -1,4 +1,4 @@
-import { Forecast } from "./domManipulation";
+import { Forecast } from "./types/customTypes";
 
 export default function fetchWeatherForecast(
   location: string,

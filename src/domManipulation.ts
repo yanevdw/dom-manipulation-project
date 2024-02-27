@@ -273,25 +273,19 @@ export function togglePopup(customLat: string, customLong: string) {
   loadMarker(Number(customLat), Number(customLong));
 
   const mainCitiesDisplay = document.getElementById("main-cities-container");
-
-  if (mainCitiesDisplay !== null) {
-    mainCitiesDisplay.style.visibility = "hidden";
-    mainCitiesDisplay.style.display = "none";
-  }
-  
   const popupDisplay = document.getElementById("popup-container");
-
-  if (popupDisplay !== null) {
-    popupDisplay.style.visibility = "visible";
-    popupDisplay.style.display = "flex";
+  const customForecastDisplay = document.getElementById("custom-container");
+  if (!mainCitiesDisplay || !popupDisplay || !customForecastDisplay) {
+    return;
   }
   
-  const customForecastDisplay = document.getElementById("custom-container");
-
-  if (customForecastDisplay !== null) {
-    customForecastDisplay.style.visibility = "visible";
-    customForecastDisplay.style.display = "flex";
-  }
+  mainCitiesDisplay.style.visibility = "hidden";
+  mainCitiesDisplay.style.display = "none";
+  popupDisplay.style.visibility = "visible";
+  popupDisplay.style.display = "flex";
+  customForecastDisplay.style.visibility = "visible";
+  customForecastDisplay.style.display = "flex";
+  
 }
 
 // Close the popup when the close icon is selected.

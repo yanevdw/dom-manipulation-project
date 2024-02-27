@@ -9,7 +9,7 @@ const mainCities = document.getElementById("main-cities-nav");
 
 // Get all the button elements in this parent.
 let  mainCityButtons : HTMLCollectionOf<Element>;
-if (mainCities !== null) {
+if (mainCities) {
   mainCityButtons = mainCities.getElementsByClassName("city-chip");
 }
 
@@ -178,7 +178,7 @@ export function loadWeatherForecast(location: string, fetchResults: Forecast[]) 
 export function failedForecast(location: string) {
   console.error(`Unable to fetch the forecast for the ${location} location`);
   const popupTextElement = document.getElementById("popup-text");
-  if (popupTextElement !== null) {
+  if (popupTextElement) {
     popupTextElement.innerText = "Unable to fetch forecast";
   }
   
@@ -186,20 +186,21 @@ export function failedForecast(location: string) {
 
 // Hides the loader after the network call has been completed.
 export function hideForecastLoader(location: string) {
+
   if (location === "custom") {
 
     const popupLoader = document.getElementById("popup-loading-container");
-    if (popupLoader !== null) {
-      popupLoader.style.visibility = "hidden";
-      popupLoader.style.display = "none";
-    }
-   
     const popupForecast =  document.getElementById("popup-forecast-container");
 
-    if (popupForecast !== null) {
-      popupForecast.style.visibility = "visible";
-      popupForecast.style.display = "flex";
+    if (!popupLoader || !popupForecast) {
+      return;
     }
+   
+    popupLoader.style.visibility = "hidden";
+    popupLoader.style.display = "none";
+    popupForecast.style.visibility = "visible";
+    popupForecast.style.display = "flex";
+    
    
   }
 }
@@ -214,7 +215,7 @@ export function handleMainCityClick(numButton: number) {
   mainCityButtons[selectedMainCity].classList.add("active");
 
   // Display forecast for selected city and hide forecasts for other main cities/locations.
-  if (forecastDisplay !== null) {
+  if (forecastDisplay) {
     for (let j = 0; j < forecastDisplay.length; j++) {
       if (j === selectedMainCity) {
         // Display corresponding forecast of selected main city.

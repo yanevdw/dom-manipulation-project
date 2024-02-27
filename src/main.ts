@@ -74,14 +74,13 @@ handleMainCityClick(0);
 map.on("click", handleMapClick);
 
 // Add the click event to the close icon to trigger the close function.
-const closePopupButton = document.getElementById("close-popup-button");
-if (closePopupButton) {
-  closePopupButton.addEventListener("click", () => closePopup());
-}
-
 // Add the click event to the reset button to trigger the reset fucnction.
+const closePopupButton = document.getElementById("close-popup-button");
 const resetMapButton = document.getElementById("reset-map-button");
-if (resetMapButton) {
+
+if (closePopupButton && resetMapButton) {
+  closePopupButton.addEventListener("click", () => closePopup());
   resetMapButton.addEventListener("click", () => resetMap());
 }
+
 

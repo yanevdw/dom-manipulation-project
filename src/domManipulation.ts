@@ -17,14 +17,6 @@ let selectedMainCity = 0;
 // Toggle visibility of the pop-up
 const mainLocations = document.getElementById("main-cities-container");
 const customLocationPopup = document.getElementById("popup-container");
-if (mainLocations !== null) {
-  mainLocations.style.visibility = "visible";
-}
-if (customLocationPopup !== null)
-{
-  customLocationPopup.style.visibility = "hidden";
-}
-
 
 // Get the current date to convert the forecast for the current date to "Today";
 export function getCurrentDate() {
@@ -305,13 +297,15 @@ export function togglePopup(customLat: string, customLong: string) {
 // Close the popup when the close icon is selected.
 export function closePopup() {
 
-  if (mainLocations !== null && customLocationPopup !== null) {
-    mainLocations.style.visibility = "visible";
-    mainLocations.style.display = "flex";
-    customLocationPopup.style.visibility = "hidden";
-    customLocationPopup.style.display = "none";
+  if (!mainLocations || !customLocationPopup) {
+    return;
   }
-  
+
+  mainLocations.style.visibility = "visible";
+  mainLocations.style.display = "flex";
+  customLocationPopup.style.visibility = "hidden";
+  customLocationPopup.style.display = "none";
+   
   if (selectedMainCity === 0) {
     loadMarker(-25.73134, 28.21837);
   } else if (selectedMainCity === 1) {

@@ -1,10 +1,12 @@
+import { Forecast } from "./types/customTypes";
+
 export default function fetchWeatherForecast(
-  location,
-  lat,
-  long,
-  callbackSuccess,
-  callbackFailure,
-  callbackFinally,
+  location: string,
+  lat: string,
+  long: string,
+  callbackSuccess: (loc: string, res: Forecast[]) => void,
+  callbackFailure: (loc: string) => void,
+  callbackFinally: (loc: string) => void,
 ) {
   const callURL = `http://www.7timer.info/bin/api.pl?lon=${long}&lat=${lat}&product=civillight&output=json`;
 
@@ -20,7 +22,6 @@ export default function fetchWeatherForecast(
         let jsonValue = jsonResponse;
         if (
           typeof jsonResponse === "string"
-          || jsonResponse instanceof String
         ) {
           jsonValue = JSON.parse(jsonResponse);
         }
@@ -34,8 +35,7 @@ export default function fetchWeatherForecast(
         }
       } catch (error) {
         throw new Error(
-          `Invalid response from the API: "${jsonResponse}"`,
-          error,
+          `Invalid response from the API: "${jsonResponse}"`
         );
       }
     })

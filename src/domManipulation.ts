@@ -1,19 +1,22 @@
 import { format } from "date-fns";
-import { loadMarker } from "./map";
 import fetchWeatherForecast from "./api";
+import { Forecast } from "./types/customTypes";
 
 // Get the parent element for the main cities/locations which holds all the buttons.
 const mainCities = document.getElementById("main-cities-nav");
+
 // Get all the button elements in this parent.
-const mainCityButtons = mainCities.getElementsByClassName("city-chip");
+let  mainCityButtons : HTMLCollectionOf<Element>;
+if (mainCities) {
+  mainCityButtons = mainCities.getElementsByClassName("city-chip");
+}
+
 // Set the default city to the first option.
 let selectedMainCity = 0;
 
 // Toggle visibility of the pop-up
 const mainLocations = document.getElementById("main-cities-container");
 const customLocationPopup = document.getElementById("popup-container");
-mainLocations.style.visibility = "visible";
-customLocationPopup.style.visibility = "hidden";
 
 // Get the current date to convert the forecast for the current date to "Today";
 export function getCurrentDate() {
@@ -49,7 +52,7 @@ export function weatherIconConverter(weatherType = "") {
   return weatherEmoji;
 }
 
-function temperatureColourConverter(temp) {
+function temperatureColourConverter( temp: number) {
   switch (true) {
     case temp < 0:
       return "#1818d7";
@@ -68,16 +71,26 @@ function temperatureColourConverter(temp) {
   }
 }
 
-export function displayForecastLoader(location) {
+export function displayForecastLoader(location: string) {
+
+  const popupLoader = document.getElementById("popup-loading-container");
+  const popupForecastDisplay = document.getElementById("popup-forecast-container");
   if (location === "custom") {
-    document.getElementById("popup-loading-container").style.visibility = "visible";
-    document.getElementById("popup-loading-container").style.display = "flex";
-    document.getElementById("popup-forecast-container").style.visibility = "hidden";
-    document.getElementById("popup-forecast-container").style.display = "none";
+
+    if (!popupLoader || !popupForecastDisplay) {
+      return;
+    }
+
+    popupLoader.style.visibility = "visible";
+    popupLoader.style.display = "flex";
+    popupForecastDisplay.style.visibility = "hidden";
+    popupForecastDisplay.style.display = "none";
+    
+    
   }
 }
 
-export function loadWeatherForecast(location, fetchResults) {
+export function loadWeatherForecast(location: string, fetchResults: Forecast[]) {
   // Showing the loader for the popup first.
 
   const containerID = `${location}-container`;
@@ -137,7 +150,7 @@ export function loadWeatherForecast(location, fetchResults) {
       const forecastItemsList = dailyForecast.getElementsByClassName("forecast-item-info");
 
       for (let i = 0; i < forecastItemsList.length; i++) {
-        const forecastItemInfo = forecastItemsList[i];
+        const forecastItemInfo = <HTMLElement>forecastItemsList[i];
         if (i === 0) {
           if (getCurrentDate() === dateResult) {
             forecastItemInfo.innerText = "Today";
@@ -150,9 +163,9 @@ export function loadWeatherForecast(location, fetchResults) {
         } else if (i === 2) {
           const tempList = forecastItemInfo.getElementsByTagName("div");
           tempList[0].innerText = `${minTempResult} °C`;
-          tempList[0].style.backgroundColor = temperatureColourConverter(minTempResult);
+          tempList[0].style.backgroundColor = temperatureColourConverter(Number(minTempResult));
           tempList[1].innerText = `${maxTempResult} °C`;
-          tempList[1].style.backgroundColor = temperatureColourConverter(maxTempResult);
+          tempList[1].style.backgroundColor = temperatureColourConverter(Number(maxTempResult));
         }
       }
     }
@@ -160,21 +173,36 @@ export function loadWeatherForecast(location, fetchResults) {
 }
 
 // Controls what happens when the network call has been unsuccessful.
-export function failedForecast(location) {
+export function failedForecast(location: string) {
   console.error(`Unable to fetch the forecast for the ${location} location`);
-  document.getElementById("popup-text").innerText = "Unable to fetch forecast";
+  const popupTextElement = document.getElementById("popup-text");
+  if (popupTextElement) {
+    popupTextElement.innerText = "Unable to fetch forecast";
+  }
+  
 }
 
 // Hides the loader after the network call has been completed.
-export function hideForecastLoader(location) {
+export function hideForecastLoader(location: string) {
+
   if (location === "custom") {
-    document.getElementById("popup-loading-container").style.visibility = "hiddem";
-    document.getElementById("popup-loading-container").style.display = "none";
-    document.getElementById("popup-forecast-container").style.visibility = "visible";
-    document.getElementById("popup-forecast-container").style.display = "flex";
+
+    const popupLoader = document.getElementById("popup-loading-container");
+    const popupForecast =  document.getElementById("popup-forecast-container");
+
+    if (!popupLoader || !popupForecast) {
+      return;
+    }
+   
+    popupLoader.style.visibility = "hidden";
+    popupLoader.style.display = "none";
+    popupForecast.style.visibility = "visible";
+    popupForecast.style.display = "flex";
+    
+   
   }
 }
-export function handleMainCityClick(numButton) {
+export function handleMainCityClick(numButton: number, callbackMarkerLoad : (lat: number, long: number) => void) {
   const forecastDisplay = document.getElementsByClassName("city-forecast");
   // Remove the active state from the previously selected button.
   mainCityButtons[selectedMainCity].classList.remove("active");
@@ -184,32 +212,38 @@ export function handleMainCityClick(numButton) {
   mainCityButtons[selectedMainCity].classList.add("active");
 
   // Display forecast for selected city and hide forecasts for other main cities/locations.
-  for (let j = 0; j < forecastDisplay.length; j++) {
-    if (j === selectedMainCity) {
-      // Display corresponding forecast of selected main city.
-      forecastDisplay[j].style.visibility = "visible";
-      forecastDisplay[j].style.display = "flex";
-    } else {
-      // Hide all other cities' information.
-      forecastDisplay[j].style.visibility = "hidden";
-      forecastDisplay[j].style.display = "none";
+  if (forecastDisplay) {
+    for (let j = 0; j < forecastDisplay.length; j++) {
+      if (j === selectedMainCity) {
+        // Display corresponding forecast of selected main city.
+        
+        const forecastItem = <HTMLElement>(forecastDisplay[j]);
+        forecastItem.style.visibility = "visible";
+        forecastItem.style.display = "flex";
+      } else {
+        // Hide all other cities' information.
+        const forecastItem = <HTMLElement>(forecastDisplay[j]);
+        forecastItem.style.visibility = "hidden";
+        forecastItem.style.display = "none";
+      }
     }
   }
+  
 
   // Update the location of the marker.
   if (selectedMainCity === 0) {
-    loadMarker(-25.73134, 28.21837);
+    callbackMarkerLoad(-25.73134, 28.21837);
   } else if (selectedMainCity === 1) {
-    loadMarker(-26.195246, 28.034088);
+    callbackMarkerLoad(-26.195246, 28.034088);
   } else if (selectedMainCity === 2) {
-    loadMarker(-29.8579, 31.0292);
+    callbackMarkerLoad(-29.8579, 31.0292);
   } else if (selectedMainCity === 3) {
-    loadMarker(-33.918861, 18.4233);
+    callbackMarkerLoad(-33.918861, 18.4233);
   }
 }
 
 // Controls the pop-up for when a user selects a location on the map;
-export function togglePopup(customLat, customLong) {
+export function fetchPopup(customLat: string, customLong: string) {
   displayForecastLoader("custom");
 
   fetchWeatherForecast(
@@ -221,40 +255,41 @@ export function togglePopup(customLat, customLong) {
     hideForecastLoader,
   );
 
-  loadMarker(customLat, customLong);
-  document.getElementById("main-cities-container").style.visibility = "hidden";
-  document.getElementById("main-cities-container").style.display = "none";
-  document.getElementById("popup-container").style.visibility = "visible";
-  document.getElementById("popup-container").style.display = "flex";
-  document.getElementById("custom-container").style.visibility = "visible";
-  document.getElementById("custom-container").style.display = "flex";
+  const mainCitiesDisplay = document.getElementById("main-cities-container");
+  const popupDisplay = document.getElementById("popup-container");
+  const customForecastDisplay = document.getElementById("custom-container");
+  if (!mainCitiesDisplay || !popupDisplay || !customForecastDisplay) {
+    return;
+  }
+
+  mainCitiesDisplay.style.visibility = "hidden";
+  mainCitiesDisplay.style.display = "none";
+  popupDisplay.style.visibility = "visible";
+  popupDisplay.style.display = "flex";
+  customForecastDisplay.style.visibility = "visible";
+  customForecastDisplay.style.display = "flex";
+  
 }
 
 // Close the popup when the close icon is selected.
-export function closePopup() {
+export function closePopup(callbackMarkerLoad : (lat: number, long: number) => void) {
+
+  if (!mainLocations || !customLocationPopup) {
+    return;
+  }
+
   mainLocations.style.visibility = "visible";
   mainLocations.style.display = "flex";
   customLocationPopup.style.visibility = "hidden";
   customLocationPopup.style.display = "none";
-
+   
   if (selectedMainCity === 0) {
-    loadMarker(-25.73134, 28.21837);
+    callbackMarkerLoad(-25.73134, 28.21837);
   } else if (selectedMainCity === 1) {
-    loadMarker(-26.195246, 28.034088);
+    callbackMarkerLoad(-26.195246, 28.034088);
   } else if (selectedMainCity === 2) {
-    loadMarker(-29.8579, 31.0292);
+    callbackMarkerLoad(-29.8579, 31.0292);
   } else if (selectedMainCity === 3) {
-    loadMarker(-33.918861, 18.4233);
+    callbackMarkerLoad(-33.918861, 18.4233);
   }
-}
-
-// Controls what happens when user clicks on the map to select own location.
-export function handleMapClick(mapClickEvent) {
-  const latLong = String(mapClickEvent.latlng.wrap());
-  const lat = latLong.substring(latLong.indexOf("(") + 1, latLong.indexOf(","));
-  const long = latLong.substring(
-    latLong.indexOf(",") + 2,
-    latLong.indexOf(")"),
-  );
-  togglePopup(lat, long);
 }

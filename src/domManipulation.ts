@@ -1,12 +1,12 @@
 import { format } from "date-fns";
-import fetchWeatherForecast from "./api";
+// import fetchWeatherForecast from "./api";
 import { Forecast } from "./types/customTypes";
 
 // Get the parent element for the main cities/locations which holds all the buttons.
 const mainCities = document.getElementById("main-cities-nav");
 
 // Get all the button elements in this parent.
-let  mainCityButtons : HTMLCollectionOf<Element>;
+let mainCityButtons: HTMLCollectionOf<Element>;
 if (mainCities) {
   mainCityButtons = mainCities.getElementsByClassName("city-chip");
 }
@@ -52,7 +52,7 @@ export function weatherIconConverter(weatherType = "") {
   return weatherEmoji;
 }
 
-function temperatureColourConverter( temp: number) {
+function temperatureColourConverter(temp: number) {
   switch (true) {
     case temp < 0:
       return "#1818d7";
@@ -72,33 +72,32 @@ function temperatureColourConverter( temp: number) {
 }
 
 export function displayForecastLoader(location: string) {
-
   const popupLoader = document.getElementById("popup-loading-container");
-  const popupForecastDisplay = document.getElementById("popup-forecast-container");
+  const popupForecastDisplay = document.getElementById(
+    "popup-forecast-container"
+  );
   if (location === "custom") {
-
     if (!popupLoader || !popupForecastDisplay) {
       return;
     }
-
     popupLoader.style.visibility = "visible";
     popupLoader.style.display = "flex";
     popupForecastDisplay.style.visibility = "hidden";
     popupForecastDisplay.style.display = "none";
-    
-    
   }
 }
 
-export function loadWeatherForecast(location: string, fetchResults: Forecast[]) {
+export function loadWeatherForecast(
+  location: string,
+  fetchResults: Forecast[]
+) {
   // Showing the loader for the popup first.
-
   const containerID = `${location}-container`;
   const cityForecast = document.getElementById(containerID);
 
   if (cityForecast != null) {
     const cityDailyForecast = cityForecast.getElementsByClassName(
-      "daily-forecast-container",
+      "daily-forecast-container"
     );
 
     for (const result of fetchResults) {
@@ -121,33 +120,34 @@ export function loadWeatherForecast(location: string, fetchResults: Forecast[]) 
 
       const dateResult = forecastItemContent.substring(
         4,
-        forecastItemContent.indexOf(","),
+        forecastItemContent.indexOf(",")
       );
       forecastItemContent = forecastItemContent.substring(
         forecastItemContent.indexOf(",") + 1,
-        forecastItemContent.length,
+        forecastItemContent.length
       );
       const weatherResult = forecastItemContent.substring(
         0,
-        forecastItemContent.indexOf(","),
+        forecastItemContent.indexOf(",")
       );
       forecastItemContent = forecastItemContent.substring(
         forecastItemContent.indexOf(",") + 1,
-        forecastItemContent.length,
+        forecastItemContent.length
       );
       const maxTempResult = forecastItemContent.substring(
         0,
-        forecastItemContent.indexOf(","),
+        forecastItemContent.indexOf(",")
       );
       forecastItemContent = forecastItemContent.substring(
         forecastItemContent.indexOf(",") + 1,
-        forecastItemContent.length,
+        forecastItemContent.length
       );
       const minTempResult = forecastItemContent.substring(
         0,
-        forecastItemContent.indexOf(","),
+        forecastItemContent.indexOf(",")
       );
-      const forecastItemsList = dailyForecast.getElementsByClassName("forecast-item-info");
+      const forecastItemsList =
+        dailyForecast.getElementsByClassName("forecast-item-info");
 
       for (let i = 0; i < forecastItemsList.length; i++) {
         const forecastItemInfo = <HTMLElement>forecastItemsList[i];
@@ -163,9 +163,13 @@ export function loadWeatherForecast(location: string, fetchResults: Forecast[]) 
         } else if (i === 2) {
           const tempList = forecastItemInfo.getElementsByTagName("div");
           tempList[0].innerText = `${minTempResult} °C`;
-          tempList[0].style.backgroundColor = temperatureColourConverter(Number(minTempResult));
+          tempList[0].style.backgroundColor = temperatureColourConverter(
+            Number(minTempResult)
+          );
           tempList[1].innerText = `${maxTempResult} °C`;
-          tempList[1].style.backgroundColor = temperatureColourConverter(Number(maxTempResult));
+          tempList[1].style.backgroundColor = temperatureColourConverter(
+            Number(maxTempResult)
+          );
         }
       }
     }
@@ -179,30 +183,28 @@ export function failedForecast(location: string) {
   if (popupTextElement) {
     popupTextElement.innerText = "Unable to fetch forecast";
   }
-  
 }
 
 // Hides the loader after the network call has been completed.
 export function hideForecastLoader(location: string) {
-
   if (location === "custom") {
-
     const popupLoader = document.getElementById("popup-loading-container");
-    const popupForecast =  document.getElementById("popup-forecast-container");
+    const popupForecast = document.getElementById("popup-forecast-container");
 
     if (!popupLoader || !popupForecast) {
       return;
     }
-   
+
     popupLoader.style.visibility = "hidden";
     popupLoader.style.display = "none";
     popupForecast.style.visibility = "visible";
     popupForecast.style.display = "flex";
-    
-   
   }
 }
-export function handleMainCityClick(numButton: number, callbackMarkerLoad : (lat: number, long: number) => void) {
+export function handleMainCityClick(
+  numButton: number,
+  callbackMarkerLoad: (lat: number, long: number) => void
+) {
   const forecastDisplay = document.getElementsByClassName("city-forecast");
   // Remove the active state from the previously selected button.
   mainCityButtons[selectedMainCity].classList.remove("active");
@@ -216,19 +218,18 @@ export function handleMainCityClick(numButton: number, callbackMarkerLoad : (lat
     for (let j = 0; j < forecastDisplay.length; j++) {
       if (j === selectedMainCity) {
         // Display corresponding forecast of selected main city.
-        
-        const forecastItem = <HTMLElement>(forecastDisplay[j]);
+
+        const forecastItem = <HTMLElement>forecastDisplay[j];
         forecastItem.style.visibility = "visible";
         forecastItem.style.display = "flex";
       } else {
         // Hide all other cities' information.
-        const forecastItem = <HTMLElement>(forecastDisplay[j]);
+        const forecastItem = <HTMLElement>forecastDisplay[j];
         forecastItem.style.visibility = "hidden";
         forecastItem.style.display = "none";
       }
     }
   }
-  
 
   // Update the location of the marker.
   if (selectedMainCity === 0) {
@@ -243,17 +244,8 @@ export function handleMainCityClick(numButton: number, callbackMarkerLoad : (lat
 }
 
 // Controls the pop-up for when a user selects a location on the map;
-export function fetchPopup(customLat: string, customLong: string) {
+export function togglePopup() {
   displayForecastLoader("custom");
-
-  fetchWeatherForecast(
-    "custom",
-    customLat,
-    customLong,
-    loadWeatherForecast,
-    failedForecast,
-    hideForecastLoader,
-  );
 
   const mainCitiesDisplay = document.getElementById("main-cities-container");
   const popupDisplay = document.getElementById("popup-container");
@@ -261,19 +253,19 @@ export function fetchPopup(customLat: string, customLong: string) {
   if (!mainCitiesDisplay || !popupDisplay || !customForecastDisplay) {
     return;
   }
-
+  displayForecastLoader("custom");
   mainCitiesDisplay.style.visibility = "hidden";
   mainCitiesDisplay.style.display = "none";
   popupDisplay.style.visibility = "visible";
   popupDisplay.style.display = "flex";
   customForecastDisplay.style.visibility = "visible";
   customForecastDisplay.style.display = "flex";
-  
 }
 
 // Close the popup when the close icon is selected.
-export function closePopup(callbackMarkerLoad : (lat: number, long: number) => void) {
-
+export function closePopup(
+  callbackMarkerLoad: (lat: number, long: number) => void
+) {
   if (!mainLocations || !customLocationPopup) {
     return;
   }
@@ -282,7 +274,7 @@ export function closePopup(callbackMarkerLoad : (lat: number, long: number) => v
   mainLocations.style.display = "flex";
   customLocationPopup.style.visibility = "hidden";
   customLocationPopup.style.display = "none";
-   
+
   if (selectedMainCity === 0) {
     callbackMarkerLoad(-25.73134, 28.21837);
   } else if (selectedMainCity === 1) {

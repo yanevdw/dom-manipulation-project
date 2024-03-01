@@ -1,8 +1,5 @@
 import L, { LatLng } from "leaflet";
 
-export let customLat: string;
-export let customLong: string;
-
 const markerIcon = L.icon({
   iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
   shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
@@ -27,19 +24,23 @@ export function getMap() {
 }
 
 // Controls what happens when user clicks on the map to select own location.
-export function bindMapClick(callbackMapClick: () => void) {
+export function bindMapClick(
+  callbackMapClick: (lat: number, long: number) => void
+) {
   map.addEventListener("click", (mapClickEvent: { latlng: LatLng }) => {
     const latLong = String(mapClickEvent.latlng.wrap());
-    customLat = latLong.substring(
+
+    const customLat = latLong.substring(
       latLong.indexOf("(") + 1,
       latLong.indexOf(",")
     );
-    customLong = latLong.substring(
+    const customLong = latLong.substring(
       latLong.indexOf(",") + 2,
       latLong.indexOf(")")
     );
+
     loadMarker(Number(customLat), Number(customLong));
-    callbackMapClick();
+    callbackMapClick(Number(customLat), Number(customLong));
   });
 }
 

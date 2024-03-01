@@ -28,19 +28,13 @@ export function bindMapClick(
   callbackMapClick: (lat: number, long: number) => void
 ) {
   map.addEventListener("click", (mapClickEvent: { latlng: LatLng }) => {
-    const latLong = String(mapClickEvent.latlng.wrap());
+    const latLong = mapClickEvent.latlng.wrap();
 
-    const customLat = latLong.substring(
-      latLong.indexOf("(") + 1,
-      latLong.indexOf(",")
-    );
-    const customLong = latLong.substring(
-      latLong.indexOf(",") + 2,
-      latLong.indexOf(")")
-    );
+    const customLat = latLong.lat;
+    const customLong = latLong.lng;
 
-    loadMarker(Number(customLat), Number(customLong));
-    callbackMapClick(Number(customLat), Number(customLong));
+    loadMarker(customLat, customLong);
+    callbackMapClick(customLat, customLong);
   });
 }
 

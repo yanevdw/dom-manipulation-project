@@ -48,10 +48,10 @@ fetchResultSet$.subscribe((result) => {
     hideForecastLoader("custom");
   }
 
-  if (localStorage.getItem("location")) {
-    displayWeatherForecast(String(localStorage.getItem("location")), result.result.dataseries);
+  if (!localStorage.getItem("location")) {
+    console.error("The location is not stored or does not exist.");
   }
-  
+  displayWeatherForecast(String(localStorage.getItem("location")), result.result.dataseries);
 });
 
 // Get the parent element for the main cities/locations which holds all the buttons.

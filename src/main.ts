@@ -36,7 +36,6 @@ function handleMapClick(lat: number, long: number) {
   togglePopup();
   displayForecastLoader("custom");
   handleFetch("custom", String(lat), String(long));
-  // hideForecastLoader("custom");
 }
 
 fetchResultSet$.subscribe((result) => {

@@ -39,6 +39,9 @@ function handleMapClick(lat: number, long: number) {
 }
 
 fetchResultSet$.subscribe((result) => {
+  if (!result || !result.result){
+    console.error("Results have not been returned.");
+  }
   if (location === "custom") {
     hideForecastLoader("custom");
   }
@@ -67,10 +70,6 @@ bindMapClick(handleMapClick);
 // Add the click event to the reset button to trigger the reset fucnction.
 const closePopupButton = document.getElementById("close-popup-button");
 const resetMapButton = document.getElementById("reset-map-button");
-
-fetchResultSet$.subscribe((result) => {
-  displayWeatherForecast(location, result.result.dataseries);
-});
 
 if (closePopupButton && resetMapButton) {
   closePopupButton.addEventListener("click", () => closePopup(loadMarker));

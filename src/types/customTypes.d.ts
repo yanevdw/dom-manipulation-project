@@ -8,3 +8,7 @@ export interface Forecast {
   weather: string;
   temp2m: Temperature;
 }
+
+export interface WeatherResponse {
+  dataseries: Forecast[];
+}

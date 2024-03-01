@@ -1,31 +1,18 @@
 import "leaflet/dist/leaflet.css";
 import {
-  loadWeatherForecast,
+  displayWeatherForecast,
   closePopup,
   displayForecastLoader,
   handleMainCityClick,
   togglePopup,
   hideForecastLoader,
 } from "./domManipulation";
-import {
-  getMap,
-  resetMap,
-  customLat,
-  customLong,
-  bindMapClick,
-  loadMarker,
-} from "./map";
-import {
-  signalNewForecastFetch$,
-  fetchResultSet$,
-  fetchCustomResultSet$,
-} from "./api";
+import { getMap, resetMap, bindMapClick, loadMarker } from "./map";
+import { signalNewForecastFetch$, fetchResultSet$ } from "./api";
 
 let location = "pretoria";
-
 function handleFetch(loc: string, lat: string, long: string) {
   location = loc;
-  displayForecastLoader("custom");
   signalNewForecastFetch$.next([lat, long]);
 }
 
@@ -45,21 +32,19 @@ function handleCityClick(selectedCity: number) {
   }
 }
 
-function handleMapClick() {
-  handleFetch("custom", customLat, customLong);
-  fetchCustomResultSet$.subscribe((result) => {
-    loadWeatherForecast(location, result.result.dataseries);
-  });
-
+function handleMapClick(lat: number, long: number) {
   togglePopup();
-  hideForecastLoader("custom");
+  displayForecastLoader("custom");
+  handleFetch("custom", String(lat), String(long));
+  // hideForecastLoader("custom");
 }
 
 fetchResultSet$.subscribe((result) => {
-  loadWeatherForecast(location, result.result.dataseries);
+  if (location === "custom") {
+    hideForecastLoader("custom");
+  }
+  displayWeatherForecast(location, result.result.dataseries);
 });
-// // Only a loader for the pop-up. Ensures it only displays if results haven't been returned yet.
-// displayForecastLoader("custom");
 
 // Get the parent element for the main cities/locations which holds all the buttons.
 const mainCities = document.getElementById("main-cities-nav");
@@ -74,18 +59,18 @@ if (mainCities) {
 
 getMap();
 
-// // Display the forecast for Pretoria as default.
+// Display the forecast for Pretoria as default.
 handleCityClick(0);
 
 // Add a click event to the map to process when a custom or random location is selected on the map.
 bindMapClick(handleMapClick);
-// // Add the click event to the close icon to trigger the close function.
-// // Add the click event to the reset button to trigger the reset fucnction.
+// Add the click event to the close icon to trigger the close function.
+// Add the click event to the reset button to trigger the reset fucnction.
 const closePopupButton = document.getElementById("close-popup-button");
 const resetMapButton = document.getElementById("reset-map-button");
 
 fetchResultSet$.subscribe((result) => {
-  loadWeatherForecast(location, result.result.dataseries);
+  displayWeatherForecast(location, result.result.dataseries);
 });
 
 if (closePopupButton && resetMapButton) {

@@ -10,9 +10,10 @@ import {
 import { getMap, resetMap, bindMapClick, loadMarker } from "./map";
 import { signalNewForecastFetch$, fetchResultSet$ } from "./api";
 
-let location = "pretoria";
+localStorage.setItem("location", "pretoria");
+
 function handleFetch(loc: string, lat: string, long: string) {
-  location = loc;
+  localStorage.setItem("location", loc);
   signalNewForecastFetch$.next([lat, long]);
 }
 
@@ -42,10 +43,15 @@ fetchResultSet$.subscribe((result) => {
   if (!result || !result.result){
     console.error("Results have not been returned.");
   }
-  if (location === "custom") {
+
+  if (localStorage.getItem("location") === "custom") {
     hideForecastLoader("custom");
   }
-  displayWeatherForecast(location, result.result.dataseries);
+
+  if (localStorage.getItem("location")) {
+    displayWeatherForecast(String(localStorage.getItem("location")), result.result.dataseries);
+  }
+  
 });
 
 // Get the parent element for the main cities/locations which holds all the buttons.

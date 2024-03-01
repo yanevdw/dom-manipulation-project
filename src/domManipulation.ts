@@ -87,7 +87,7 @@ export function displayForecastLoader(location: string) {
   }
 }
 
-export function loadWeatherForecast(
+export function displayWeatherForecast(
   location: string,
   fetchResults: Forecast[]
 ) {
@@ -201,6 +201,7 @@ export function hideForecastLoader(location: string) {
     popupForecast.style.display = "flex";
   }
 }
+
 export function handleMainCityClick(
   numButton: number,
   callbackMarkerLoad: (lat: number, long: number) => void
@@ -245,15 +246,12 @@ export function handleMainCityClick(
 
 // Controls the pop-up for when a user selects a location on the map;
 export function togglePopup() {
-  displayForecastLoader("custom");
-
   const mainCitiesDisplay = document.getElementById("main-cities-container");
   const popupDisplay = document.getElementById("popup-container");
   const customForecastDisplay = document.getElementById("custom-container");
   if (!mainCitiesDisplay || !popupDisplay || !customForecastDisplay) {
     return;
   }
-  displayForecastLoader("custom");
   mainCitiesDisplay.style.visibility = "hidden";
   mainCitiesDisplay.style.display = "none";
   popupDisplay.style.visibility = "visible";

@@ -19,13 +19,13 @@ const mainLocations = document.getElementById("main-cities-container");
 const customLocationPopup = document.getElementById("popup-container");
 
 // Get the current date to convert the forecast for the current date to "Today";
-export function getCurrentDate() {
+export function getCurrentDate () {
   // Convert to format that matches how the result from the network call has been formulated.
   return format(new Date(), "yyyyMMdd");
 }
 
 // Convert the general weather types to corresponding emojis.
-export function weatherIconConverter(weatherType = "") {
+export function weatherIconConverter (weatherType = "") {
   let weatherEmoji = "&#x1F31E;";
   if (weatherType.includes("clearday")) {
     weatherEmoji = "&#x1F31E;";
@@ -52,7 +52,7 @@ export function weatherIconConverter(weatherType = "") {
   return weatherEmoji;
 }
 
-function temperatureColourConverter(temp: number) {
+function temperatureColourConverter (temp: number) {
   switch (true) {
     case temp < 0:
       return "#1818d7";
@@ -71,7 +71,7 @@ function temperatureColourConverter(temp: number) {
   }
 }
 
-export function displayForecastLoader(location: string) {
+export function displayForecastLoader (location: string) {
   const popupLoader = document.getElementById("popup-loading-container");
   const popupForecastDisplay = document.getElementById(
     "popup-forecast-container"
@@ -87,7 +87,7 @@ export function displayForecastLoader(location: string) {
   }
 }
 
-export function displayWeatherForecast(
+export function displayWeatherForecast (
   location: string,
   fetchResults: Forecast[]
 ) {
@@ -130,7 +130,7 @@ export function displayWeatherForecast(
       // Loop through element list and add respective results to designated elements.
 
       for (let i = 0; i < forecastItemsList.length; i++) {
-        const forecastItemInfo = <HTMLElement>forecastItemsList[i];
+        const forecastItemInfo = forecastItemsList[i] as HTMLElement;
         if (i === 0) {
           if (getCurrentDate() === String(dateResult)) {
             // This compares the current date with the received date to change the date "header" to Today.
@@ -162,7 +162,7 @@ export function displayWeatherForecast(
 }
 
 // Controls what happens when the network call has been unsuccessful.
-export function failedForecast(location: string) {
+export function failedForecast (location: string) {
   console.error(`Unable to fetch the forecast for the ${location} location`);
   const popupTextElement = document.getElementById("popup-text");
   if (popupTextElement) {
@@ -171,7 +171,7 @@ export function failedForecast(location: string) {
 }
 
 // Hides the loader after the network call has been completed.
-export function hideForecastLoader(location: string) {
+export function hideForecastLoader (location: string) {
   if (location === "custom") {
     const popupLoader = document.getElementById("popup-loading-container");
     const popupForecast = document.getElementById("popup-forecast-container");
@@ -187,7 +187,7 @@ export function hideForecastLoader(location: string) {
   }
 }
 
-export function handleMainCityClick(
+export function handleMainCityClick (
   numButton: number,
   callbackMarkerLoad: (lat: number, long: number) => void
 ) {
@@ -205,12 +205,12 @@ export function handleMainCityClick(
       if (j === selectedMainCity) {
         // Display corresponding forecast of selected main city.
 
-        const forecastItem = <HTMLElement>forecastDisplay[j];
+        const forecastItem = forecastDisplay[j] as HTMLElement;
         forecastItem.style.visibility = "visible";
         forecastItem.style.display = "flex";
       } else {
         // Hide all other cities' information.
-        const forecastItem = <HTMLElement>forecastDisplay[j];
+        const forecastItem = forecastDisplay[j] as HTMLElement;
         forecastItem.style.visibility = "hidden";
         forecastItem.style.display = "none";
       }
@@ -230,7 +230,7 @@ export function handleMainCityClick(
 }
 
 // Controls the pop-up for when a user selects a location on the map;
-export function togglePopup() {
+export function togglePopup () {
   const mainCitiesDisplay = document.getElementById("main-cities-container");
   const popupDisplay = document.getElementById("popup-container");
   const customForecastDisplay = document.getElementById("custom-container");
@@ -246,7 +246,7 @@ export function togglePopup() {
 }
 
 // Close the popup when the close icon is selected.
-export function closePopup(
+export function closePopup (
   callbackMarkerLoad: (lat: number, long: number) => void
 ) {
   if (!mainLocations || !customLocationPopup) {

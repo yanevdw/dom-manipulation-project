@@ -5,19 +5,19 @@ import {
   displayForecastLoader,
   handleMainCityClick,
   togglePopup,
-  hideForecastLoader,
+  hideForecastLoader
 } from "./domManipulation";
 import { getMap, resetMap, bindMapClick, loadMarker } from "./map";
 import { signalNewForecastFetch$, fetchResultSet$ } from "./api";
 
 localStorage.setItem("location", "pretoria");
 
-function handleFetch(loc: string, lat: number, long: number) {
+function handleFetch (loc: string, lat: number, long: number) {
   localStorage.setItem("location", loc);
   signalNewForecastFetch$.next([lat, long]);
 }
 
-function handleCityClick(selectedCity: number) {
+function handleCityClick (selectedCity: number) {
   if (selectedCity === 0) {
     handleFetch("pretoria", -25.731340, 28.218370);
     handleMainCityClick(selectedCity, loadMarker);
@@ -33,14 +33,14 @@ function handleCityClick(selectedCity: number) {
   }
 }
 
-function handleMapClick(lat: number, long: number) {
+function handleMapClick (lat: number, long: number) {
   togglePopup();
   displayForecastLoader("custom");
   handleFetch("custom", lat, long);
 }
 
 fetchResultSet$.subscribe((result) => {
-  if (!result || !result.result){
+  if (!result?.result) {
     console.error("Results have not been returned.");
   }
 
@@ -61,7 +61,7 @@ if (mainCities) {
   const mainCityButtons = mainCities.getElementsByClassName("city-chip");
   // Add a click event to each of the main city chips to show their respective forecasts.
   for (let i = 0; i < mainCityButtons.length; i++) {
-    mainCityButtons[i].addEventListener("click", () => handleCityClick(i));
+    mainCityButtons[i].addEventListener("click", () => { handleCityClick(i); });
   }
 }
 
@@ -78,6 +78,6 @@ const closePopupButton = document.getElementById("close-popup-button");
 const resetMapButton = document.getElementById("reset-map-button");
 
 if (closePopupButton && resetMapButton) {
-  closePopupButton.addEventListener("click", () => closePopup(loadMarker));
-  resetMapButton.addEventListener("click", () => resetMap());
+  closePopupButton.addEventListener("click", () => { closePopup(loadMarker); });
+  resetMapButton.addEventListener("click", () => { resetMap(); });
 }

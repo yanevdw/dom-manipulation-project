@@ -14,7 +14,17 @@
         "no-plusplus" : "off",
         "no-console" : "off",
         "no-undef" : "off",
-        "@typescript-eslint/no-unsafe-argument" : "error",
-        "@typescript-eslint/no-explicit-any" : "error"
+        "@typescript-eslint/no-unsafe-argument" : "off",
+        "@typescript-eslint/no-explicit-any" : "error",
+        "@typescript-eslint/quotes": ["warn", "double"],
+        "@typescript-eslint/triple-slash-reference": "off",
+        "@typescript-eslint/member-delimiter-style": "off",
+        "@typescript-eslint/semi": "off",
+        "@typescript-eslint/consistent-type-imports": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/strict-boolean-expressions": "off"
+   
+
+    
     }
 }

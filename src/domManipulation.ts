@@ -57,15 +57,15 @@ function temperatureColourConverter(temp: number) {
     case temp < 0:
       return "#1818d7";
     case temp < 10:
-      return "#0e7ccb";
+      return "#1d50cb";
     case temp < 20:
-      return "#03a3d9";
+      return "#146fdb";
     case temp < 30:
-      return "#338a5a";
+      return "#147040";
     case temp < 40:
-      return "#d38e0e";
+      return "#b85a03";
     case temp < 50:
-      return "#ff0000";
+      return "#b00202";
     default:
       return "#6153cc";
   }

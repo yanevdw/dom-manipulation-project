@@ -12,23 +12,23 @@ import { signalNewForecastFetch$, fetchResultSet$ } from "./api";
 
 localStorage.setItem("location", "pretoria");
 
-function handleFetch(loc: string, lat: string, long: string) {
+function handleFetch(loc: string, lat: number, long: number) {
   localStorage.setItem("location", loc);
   signalNewForecastFetch$.next([lat, long]);
 }
 
 function handleCityClick(selectedCity: number) {
   if (selectedCity === 0) {
-    handleFetch("pretoria", "-25.731340", "28.218370");
+    handleFetch("pretoria", -25.731340, 28.218370);
     handleMainCityClick(selectedCity, loadMarker);
   } else if (selectedCity === 1) {
-    handleFetch("johannesburg", "-26.195246", "28.034088");
+    handleFetch("johannesburg", -26.195246, 28.034088);
     handleMainCityClick(selectedCity, loadMarker);
   } else if (selectedCity === 2) {
-    handleFetch("durban", "-29.85790000", "31.02920000");
+    handleFetch("durban", -29.85790000, 31.02920000);
     handleMainCityClick(selectedCity, loadMarker);
   } else if (selectedCity === 3) {
-    handleFetch("cape-town", "-33.918861", "18.423300");
+    handleFetch("cape-town", -33.918861, 18.423300);
     handleMainCityClick(selectedCity, loadMarker);
   }
 }
@@ -36,7 +36,7 @@ function handleCityClick(selectedCity: number) {
 function handleMapClick(lat: number, long: number) {
   togglePopup();
   displayForecastLoader("custom");
-  handleFetch("custom", String(lat), String(long));
+  handleFetch("custom", lat, long);
 }
 
 fetchResultSet$.subscribe((result) => {

@@ -3,7 +3,7 @@ import { EMPTY, Subject, catchError, map, switchMap, throttleTime } from "rxjs";
 import { fromFetch } from "rxjs/fetch";
 import { fromPromise } from "rxjs/internal/observable/innerFrom";
 
-export const signalNewForecastFetch$ = new Subject<[string, string]>();
+export const signalNewForecastFetch$ = new Subject<[number, number]>();
 
 export const fetchResultSet$ = signalNewForecastFetch$.pipe(
   throttleTime(200),

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="w-full h-full bg-baseColor m-0 p-0 font-sans">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
@@ -12,451 +12,451 @@
 
     <title>Weather Wizard</title>
   </head>
-  <body>
-    <div id="app">
-      <div class="header-container">
-        <div class="page-info-container">
-          <div class="logo-container">
-            <i class="fa-solid fa-bolt-lightning" id="logo-icon"></i>
+  <body class="w-full h-full bg-baseColor m-0 p-0 font-sans">
+    <div id="app" class="w-full h-full flex flex-col justify-evenly m-0 p-0 overflow-hidden">
+      <div class="header-container flex my-0 mx-8 items-center h-[10%] gap-10">
+        <div class="page-info-container flex flex-row items-center justify-start">
+          <div class="logo-container h-full px-0 py-2 flex items-center">
+            <i class="fa-solid fa-bolt-lightning text-white text-3xl" id="logo-icon"></i>
           </div>
-          <h1 class="page-title">Weather Wizard</h1>
+          <h1 class="page-title text-white text-center text-2xl ml-4 text-nowrap">Weather Wizard</h1>
         </div>
       </div>
-      <div class="content-container">
-        <div class="weather-container">
-          <div class="main-cities-container" id="main-cities-container">
-            <h2 class="section-header">Main Cities</h2>
+      <div class="content-container mx-8 my-0 flex flex-col justify-around">
+        <div class="weather-container w-full h-3/6 text-white">
+          <div class="main-cities-container w-full h-full flex flex-col justify-evenly" id="main-cities-container">
+            <h2 class="section-header p-0 m-0 text-white text-xl">Main Cities</h2>
 
-            <div id="main-cities-nav" class="main-cities-nav">
-              <button class="city-chip">Pretoria</button>
-              <button class="city-chip">Johannesburg</button>
-              <button class="city-chip">Durban</button>
-              <button class="city-chip">Cape Town</button>
+            <div id="main-cities-nav" class="main-cities-nav w-full m-0 align-middle h-fit flex flex-row justify-between overflow-x-scroll gap-2.5 mb-2">
+              <button class="city-chip bg-pillColor outline-none border-none text-center text-nowrap text-sm rounded-3xl w-fit px-3 py-2 text-pill hover:cursor-pointer">Pretoria</button>
+              <button class="city-chip bg-pillColor outline-none border-none text-center text-nowrap text-sm rounded-3xl w-fit px-3 py-2 text-pill hover:cursor-pointer">Johannesburg</button>
+              <button class="city-chip bg-pillColor outline-none border-none text-center text-nowrap text-sm rounded-3xl w-fit px-3 py-2 text-pill hover:cursor-pointer">Durban</button>
+              <button class="city-chip bg-pillColor outline-none border-none text-center text-nowrap text-sm rounded-3xl w-fit px-3 py-2 text-pill hover:cursor-pointer">Cape Town</button>
             </div>
-            <h3 class="section-header">Forecast</h3>
-            <div class="forecast-container" id="cities-forecast">
-              <div id="pretoria-container" class="city-forecast">
-                <div class="daily-forecast-container" id="forecast-day-1">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
+            <h3 class="section-header p-0 m-0 text-white text-xl">Forecast</h3>
+            <div class="forecast-container h-3/5 w-f" id="cities-forecast">
+              <div id="pretoria-container" class="city-forecast w-full h-full flex flex-row justify-between content-center overflow-x-auto">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-1">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
                     <div
-                      class="min-temp-container"
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="min-temp-container"
                     ></div>
                     <div
-                      class="max-temp-container"
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="max-temp-container"
                     ></div>
                   </div>
                 </div>
 
-                <div class="daily-forecast-container" id="forecast-day-2">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0"  id="forecast-day-2">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
                     <div
-                      class="min-temp-container"
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="min-temp-container"
                     ></div>
                     <div
-                      class="max-temp-container"
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="max-temp-container"
                     ></div>
                   </div>
                 </div>
 
-                <div class="daily-forecast-container" id="forecast-day-3">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-3">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
                     <div
-                      class="min-temp-container"
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="min-temp-container"
                     ></div>
                     <div
-                      class="max-temp-container"
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="max-temp-container"
                     ></div>
                   </div>
                 </div>
 
-                <div class="daily-forecast-container" id="forecast-day-4">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0"  id="forecast-day-4">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
                     <div
-                      class="min-temp-container"
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="min-temp-container"
                     ></div>
                     <div
-                      class="max-temp-container"
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="max-temp-container"
                     ></div>
                   </div>
                 </div>
 
-                <div class="daily-forecast-container" id="forecast-day-5">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0"  id="forecast-day-5">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
                     <div
-                      class="min-temp-container"
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="min-temp-container"
                     ></div>
                     <div
-                      class="max-temp-container"
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="max-temp-container"
                     ></div>
                   </div>
                 </div>
 
-                <div class="daily-forecast-container" id="forecast-day-6">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-6">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
                     <div
-                      class="min-temp-container"
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="min-temp-container"
                     ></div>
                     <div
-                      class="max-temp-container"
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="max-temp-container"
                     ></div>
                   </div>
                 </div>
 
-                <div class="daily-forecast-container" id="forecast-day-7">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0"  id="forecast-day-7">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
                     <div
-                      class="min-temp-container"
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="min-temp-container"
                     ></div>
                     <div
-                      class="max-temp-container"
-                      id="max-temp-container"
-                    ></div>
-                  </div>
-                </div>
-              </div>
-
-              <div id="johannesburg-container" class="city-forecast">
-                <div class="daily-forecast-container" id="forecast-day-1">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
-                    <div
-                      class="min-temp-container"
-                      id="min-temp-container"
-                    ></div>
-                    <div
-                      class="max-temp-container"
-                      id="max-temp-container"
-                    ></div>
-                  </div>
-                </div>
-
-                <div class="daily-forecast-container" id="forecast-day-2">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
-                    <div
-                      class="min-temp-container"
-                      id="min-temp-container"
-                    ></div>
-                    <div
-                      class="max-temp-container"
-                      id="max-temp-container"
-                    ></div>
-                  </div>
-                </div>
-
-                <div class="daily-forecast-container" id="forecast-day-3">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
-                    <div
-                      class="min-temp-container"
-                      id="min-temp-container"
-                    ></div>
-                    <div
-                      class="max-temp-container"
-                      id="max-temp-container"
-                    ></div>
-                  </div>
-                </div>
-
-                <div class="daily-forecast-container" id="forecast-day-4">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
-                    <div
-                      class="min-temp-container"
-                      id="min-temp-container"
-                    ></div>
-                    <div
-                      class="max-temp-container"
-                      id="max-temp-container"
-                    ></div>
-                  </div>
-                </div>
-
-                <div class="daily-forecast-container" id="forecast-day-5">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
-                    <div
-                      class="min-temp-container"
-                      id="min-temp-container"
-                    ></div>
-                    <div
-                      class="max-temp-container"
-                      id="max-temp-container"
-                    ></div>
-                  </div>
-                </div>
-
-                <div class="daily-forecast-container" id="forecast-day-6">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
-                    <div
-                      class="min-temp-container"
-                      id="min-temp-container"
-                    ></div>
-                    <div
-                      class="max-temp-container"
-                      id="max-temp-container"
-                    ></div>
-                  </div>
-                </div>
-
-                <div class="daily-forecast-container" id="forecast-day-7">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
-                    <div
-                      class="min-temp-container"
-                      id="min-temp-container"
-                    ></div>
-                    <div
-                      class="max-temp-container"
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="max-temp-container"
                     ></div>
                   </div>
                 </div>
               </div>
 
-              <div id="durban-container" class="city-forecast">
-                <div class="daily-forecast-container" id="forecast-day-1">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
+              <div id="johannesburg-container" class="city-forecast w-full h-full flex flex-row justify-between content-center overflow-x-auto">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-1">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
                     <div
-                      class="min-temp-container"
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="min-temp-container"
                     ></div>
                     <div
-                      class="max-temp-container"
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="max-temp-container"
                     ></div>
                   </div>
                 </div>
 
-                <div class="daily-forecast-container" id="forecast-day-2">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-2">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
                     <div
-                      class="min-temp-container"
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="min-temp-container"
                     ></div>
                     <div
-                      class="max-temp-container"
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="max-temp-container"
                     ></div>
                   </div>
                 </div>
 
-                <div class="daily-forecast-container" id="forecast-day-3">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0"  id="forecast-day-3">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
                     <div
-                      class="min-temp-container"
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="min-temp-container"
                     ></div>
                     <div
-                      class="max-temp-container"
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="max-temp-container"
                     ></div>
                   </div>
                 </div>
 
-                <div class="daily-forecast-container" id="forecast-day-4">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-4">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
                     <div
-                      class="min-temp-container"
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="min-temp-container"
                     ></div>
                     <div
-                      class="max-temp-container"
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="max-temp-container"
                     ></div>
                   </div>
                 </div>
 
-                <div class="daily-forecast-container" id="forecast-day-5">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-5">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
                     <div
-                      class="min-temp-container"
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="min-temp-container"
                     ></div>
                     <div
-                      class="max-temp-container"
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="max-temp-container"
                     ></div>
                   </div>
                 </div>
 
-                <div class="daily-forecast-container" id="forecast-day-6">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-6">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
                     <div
-                      class="min-temp-container"
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="min-temp-container"
                     ></div>
                     <div
-                      class="max-temp-container"
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="max-temp-container"
                     ></div>
                   </div>
                 </div>
 
-                <div class="daily-forecast-container" id="forecast-day-7">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-7">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
                     <div
-                      class="min-temp-container"
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="min-temp-container"
                     ></div>
                     <div
-                      class="max-temp-container"
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="max-temp-container"
                     ></div>
                   </div>
                 </div>
               </div>
 
-              <div id="cape-town-container" class="city-forecast">
-                <div class="daily-forecast-container" id="forecast-day-1">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
+              <div id="durban-container" class="city-forecast w-full h-full flex flex-row justify-between content-center overflow-x-auto">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-1">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
                     <div
-                      class="min-temp-container"
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="min-temp-container"
                     ></div>
                     <div
-                      class="max-temp-container"
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="max-temp-container"
                     ></div>
                   </div>
                 </div>
 
-                <div class="daily-forecast-container" id="forecast-day-2">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-2">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
                     <div
-                      class="min-temp-container"
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="min-temp-container"
                     ></div>
                     <div
-                      class="max-temp-container"
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="max-temp-container"
                     ></div>
                   </div>
                 </div>
 
-                <div class="daily-forecast-container" id="forecast-day-3">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-3">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
                     <div
-                      class="min-temp-container"
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="min-temp-container"
                     ></div>
                     <div
-                      class="max-temp-container"
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="max-temp-container"
                     ></div>
                   </div>
                 </div>
 
-                <div class="daily-forecast-container" id="forecast-day-4">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-4">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
                     <div
-                      class="min-temp-container"
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="min-temp-container"
                     ></div>
                     <div
-                      class="max-temp-container"
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="max-temp-container"
                     ></div>
                   </div>
                 </div>
 
-                <div class="daily-forecast-container" id="forecast-day-5">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-5">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
                     <div
-                      class="min-temp-container"
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="min-temp-container"
                     ></div>
                     <div
-                      class="max-temp-container"
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="max-temp-container"
                     ></div>
                   </div>
                 </div>
 
-                <div class="daily-forecast-container" id="forecast-day-6">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-6">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
                     <div
-                      class="min-temp-container"
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="min-temp-container"
                     ></div>
                     <div
-                      class="max-temp-container"
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="max-temp-container"
                     ></div>
                   </div>
                 </div>
 
-                <div class="daily-forecast-container" id="forecast-day-7">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-7">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
                     <div
-                      class="min-temp-container"
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="min-temp-container"
                     ></div>
                     <div
-                      class="max-temp-container"
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="cape-town-container" class="city-forecast w-full h-full flex flex-row justify-between content-center overflow-x-auto">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-1">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
+                    <div
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-2">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
+                    <div
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-3">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
+                    <div
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-4">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
+                    <div
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-5">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
+                    <div
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-6">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
+                    <div
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
+                      id="max-temp-container"
+                    ></div>
+                  </div>
+                </div>
+
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-7">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
+                    <div
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
+                      id="min-temp-container"
+                    ></div>
+                    <div
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="max-temp-container"
                     ></div>
                   </div>
@@ -465,119 +465,119 @@
             </div>
           </div>
 
-          <div class="popup-container" id="popup-container">
-            <div class="popup-loading-container" id="popup-loading-container">
-              <div class="loading-icon">&#129668;</div>
-              <p id="popup-text">Fetching forecast...</p>
+          <div class="popup-container bg-popupColor px-4 py-4 rounded-md hidden w-full h-full" id="popup-container">
+            <div class="popup-loading-container w-full h-full flex flex-col justify-center items-center" id="popup-loading-container">
+              <div class="loading-icon font-semibold">&#129668;</div>
+              <p id="popup-text" class="text-xl">Fetching forecast...</p>
             </div>
-            <div class="popup-forecast-container" id="popup-forecast-container">
-              <div class="popup-header">
-                <h2 class="section-header">Custom location</h2>
-                <i class="fa-solid fa-circle-xmark" id="close-popup-button"></i>
+            <div class="popup-forecast-container w-full h-full flex flex-col justify-between" id="popup-forecast-container">
+              <div class="popup-header flex w-full flex-row justify-between items-center">
+                <h2 class="section-header p-0 m-0 text-white text-xl font-semibold">Custom location</h2>
+                <i class="fa-solid fa-circle-xmark text-white text-2xl hover:cursor-pointer" id="close-popup-button"></i>
               </div>
 
-              <h4 class="popup-forecast-header">7-day Forecast</h4>
-              <div id="custom-container" class="city-forecast">
-                <div class="daily-forecast-container" id="forecast-day-1">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
+              <h4 class="popup-forecast-header text-lg">7-day Forecast</h4>
+              <div id="custom-container" class="city-forecast w-full h-4/5 flex flex-row justify-between content-cenet overflow-x-auto">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0 bg-popupForecastCardColor rounded text-center overflow-hidden first:ml-0" id="forecast-day-1">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold justify-self-center " id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col gap-1.5 h-full justify-center" id="forecast-temp">
                     <div
-                      class="min-temp-container"
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="min-temp-container"
                     ></div>
                     <div
-                      class="max-temp-container"
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="max-temp-container"
                     ></div>
                   </div>
                 </div>
 
-                <div class="daily-forecast-container" id="forecast-day-2">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0 bg-popupForecastCardColor rounded text-center overflow-hidden first:ml-0" id="forecast-day-2">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold justify-self-center " id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col gap-1.5 h-full justify-center" id="forecast-temp">
                     <div
-                      class="min-temp-container"
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="min-temp-container"
                     ></div>
                     <div
-                      class="max-temp-container"
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="max-temp-container"
                     ></div>
                   </div>
                 </div>
 
-                <div class="daily-forecast-container" id="forecast-day-3">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0 bg-popupForecastCardColor rounded text-center overflow-hidden first:ml-0" id="forecast-day-3">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold justify-self-center " id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col gap-1.5 h-full justify-center" id="forecast-temp">
                     <div
-                      class="min-temp-container"
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="min-temp-container"
                     ></div>
                     <div
-                      class="max-temp-container"
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="max-temp-container"
                     ></div>
                   </div>
                 </div>
 
-                <div class="daily-forecast-container" id="forecast-day-4">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0 bg-popupForecastCardColor rounded text-center overflow-hidden first:ml-0" id="forecast-day-4">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold justify-self-center " id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col gap-1.5 h-full justify-center" id="forecast-temp">
                     <div
-                      class="min-temp-container"
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="min-temp-container"
                     ></div>
                     <div
-                      class="max-temp-container"
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="max-temp-container"
                     ></div>
                   </div>
                 </div>
 
-                <div class="daily-forecast-container" id="forecast-day-5">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0 bg-popupForecastCardColor rounded text-center overflow-hidden first:ml-0" id="forecast-day-5">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold justify-self-center " id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col gap-1.5 h-full justify-center" id="forecast-temp">
                     <div
-                      class="min-temp-container"
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="min-temp-container"
                     ></div>
                     <div
-                      class="max-temp-container"
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="max-temp-container"
                     ></div>
                   </div>
                 </div>
 
-                <div class="daily-forecast-container" id="forecast-day-6">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0 bg-popupForecastCardColor rounded text-center overflow-hidden first:ml-0" id="forecast-day-6">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold justify-self-center " id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col gap-1.5 h-full justify-center" id="forecast-temp">
                     <div
-                      class="min-temp-container"
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="min-temp-container"
                     ></div>
                     <div
-                      class="max-temp-container"
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="max-temp-container"
                     ></div>
                   </div>
                 </div>
 
-                <div class="daily-forecast-container" id="forecast-day-7">
-                  <div class="forecast-item-info" id="forecast-date"></div>
-                  <div class="forecast-item-info" id="forecast-weather"></div>
-                  <div class="forecast-item-info" id="forecast-temp">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0 bg-popupForecastCardColor rounded text-center overflow-hidden first:ml-0" id="forecast-day-7">
+                  <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
+                  <div class="forecast-item-info font-semibold justify-self-center " id="forecast-weather"></div>
+                  <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col gap-1.5 h-full justify-center" id="forecast-temp">
                     <div
-                      class="min-temp-container"
+                      class="min-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="min-temp-container"
                     ></div>
                     <div
-                      class="max-temp-container"
+                      class="max-temp-container m-0 rounded-2xl px-2 py-1.5 h-fit"
                       id="max-temp-container"
                     ></div>
                   </div>
@@ -587,21 +587,21 @@
           </div>
         </div>
 
-        <div class="map-container">
-          <div class="map-header">
-            <h2 class="section-header">Global Map</h2>
-            <div id="reset-map-button" class="reset-map-button">
-              <p>Reset Map</p>
+        <div class="map-container w-full h-1/2 flex flex-col justify-evenly">
+          <div class="map-header flex flex-row w-full items-center justify-between">
+            <h2 class="section-header p-0 m-0 text-white text-xl font-semibold">Global Map</h2>
+            <div id="reset-map-button" class="reset-map-button bg-popupColor outline-none border-none text-center text-nowrap rounded-3xl w-fit px-8 py-2 hover:cursor-pointer">
+              <p class="text-white m-0">Reset Map</p>
             </div>
           </div>
 
-          <div class="map-view-container">
-            <div id="map"></div>
+          <div class="map-view-container w-full h-3/4">
+            <div id="map" class="h-full w-full rounded-md"></div>
           </div>
         </div>
       </div>
 
-      <div class="footer-container"></div>
+      <div class="footer-container h-10"></div>
     </div>
 
     <script type="module" src="/src/main.ts"></script>

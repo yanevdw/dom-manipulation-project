@@ -14,7 +14,7 @@
   </head>
   <body class="w-full h-full bg-baseColor m-0 p-0 font-sans">
     <div id="app" class="w-full h-full flex flex-col justify-evenly m-0 p-0 overflow-hidden">
-      <div class="header-container flex my-0 mx-8 items-center h-1/10 gap-10">
+      <div class="header-container flex my-0 mx-8 items-center h-[10%] gap-10">
         <div class="page-info-container flex flex-row items-center justify-start">
           <div class="logo-container h-full px-0 py-2 flex items-center">
             <i class="fa-solid fa-bolt-lightning text-white text-3xl" id="logo-icon"></i>
@@ -28,15 +28,15 @@
             <h2 class="section-header p-0 m-0 text-white text-xl">Main Cities</h2>
 
             <div id="main-cities-nav" class="main-cities-nav w-full m-0 align-middle h-fit flex flex-row justify-between overflow-x-scroll gap-2.5 mb-2">
-              <button class="city-chip bg-pillColor outline-none border-none text-center text-nowrap text-sm rounded-3xl w-fit px-3 py-2 text-pill hover: cursor-pointer">Pretoria</button>
-              <button class="city-chip bg-pillColor outline-none border-none text-center text-nowrap text-sm rounded-3xl w-fit px-3 py-2 text-pill hover: cursor-pointer">Johannesburg</button>
-              <button class="city-chip bg-pillColor outline-none border-none text-center text-nowrap text-sm rounded-3xl w-fit px-3 py-2 text-pill hover: cursor-pointer">Durban</button>
-              <button class="city-chip bg-pillColor outline-none border-none text-center text-nowrap text-sm rounded-3xl w-fit px-3 py-2 text-pill hover: cursor-pointer">Cape Town</button>
+              <button class="city-chip bg-pillColor outline-none border-none text-center text-nowrap text-sm rounded-3xl w-fit px-3 py-2 text-pill hover:cursor-pointer">Pretoria</button>
+              <button class="city-chip bg-pillColor outline-none border-none text-center text-nowrap text-sm rounded-3xl w-fit px-3 py-2 text-pill hover:cursor-pointer">Johannesburg</button>
+              <button class="city-chip bg-pillColor outline-none border-none text-center text-nowrap text-sm rounded-3xl w-fit px-3 py-2 text-pill hover:cursor-pointer">Durban</button>
+              <button class="city-chip bg-pillColor outline-none border-none text-center text-nowrap text-sm rounded-3xl w-fit px-3 py-2 text-pill hover:cursor-pointer">Cape Town</button>
             </div>
             <h3 class="section-header p-0 m-0 text-white text-xl">Forecast</h3>
             <div class="forecast-container h-3/5 w-f" id="cities-forecast">
               <div id="pretoria-container" class="city-forecast w-full h-full flex flex-row justify-between content-center overflow-x-auto">
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first: ml-0" id="forecast-day-1">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-1">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
@@ -51,7 +51,7 @@
                   </div>
                 </div>
 
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first: ml-0"  id="forecast-day-2">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0"  id="forecast-day-2">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
@@ -66,7 +66,7 @@
                   </div>
                 </div>
 
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first: ml-0" id="forecast-day-3">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-3">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
@@ -81,7 +81,7 @@
                   </div>
                 </div>
 
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first: ml-0"  id="forecast-day-4">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0"  id="forecast-day-4">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
@@ -96,7 +96,7 @@
                   </div>
                 </div>
 
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first: ml-0"  id="forecast-day-5">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0"  id="forecast-day-5">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
@@ -111,7 +111,7 @@
                   </div>
                 </div>
 
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first: ml-0" id="forecast-day-6">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-6">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
@@ -126,7 +126,7 @@
                   </div>
                 </div>
 
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hiddenfirst: ml-0"  id="forecast-day-7">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0"  id="forecast-day-7">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
@@ -143,7 +143,7 @@
               </div>
 
               <div id="johannesburg-container" class="city-forecast w-full h-full flex flex-row justify-between content-center overflow-x-auto">
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first: ml-0" id="forecast-day-1">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-1">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
@@ -158,7 +158,7 @@
                   </div>
                 </div>
 
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first: ml-0" id="forecast-day-2">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-2">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
@@ -173,7 +173,7 @@
                   </div>
                 </div>
 
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first: ml-0"  id="forecast-day-3">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0"  id="forecast-day-3">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
@@ -188,7 +188,7 @@
                   </div>
                 </div>
 
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first: ml-0" id="forecast-day-4">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-4">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
@@ -203,7 +203,7 @@
                   </div>
                 </div>
 
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first: ml-0" id="forecast-day-5">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-5">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
@@ -218,7 +218,7 @@
                   </div>
                 </div>
 
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first: ml-0" id="forecast-day-6">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-6">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
@@ -233,7 +233,7 @@
                   </div>
                 </div>
 
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first: ml-0" id="forecast-day-7">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-7">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
@@ -250,7 +250,7 @@
               </div>
 
               <div id="durban-container" class="city-forecast w-full h-full flex flex-row justify-between content-center overflow-x-auto">
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first: ml-0" id="forecast-day-1">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-1">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
@@ -265,7 +265,7 @@
                   </div>
                 </div>
 
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first: ml-0" id="forecast-day-2">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-2">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
@@ -280,7 +280,7 @@
                   </div>
                 </div>
 
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first: ml-0" id="forecast-day-3">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-3">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
@@ -295,7 +295,7 @@
                   </div>
                 </div>
 
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first: ml-0" id="forecast-day-4">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-4">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
@@ -310,7 +310,7 @@
                   </div>
                 </div>
 
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first: ml-0" id="forecast-day-5">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-5">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
@@ -325,7 +325,7 @@
                   </div>
                 </div>
 
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first: ml-0" id="forecast-day-6">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-6">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
@@ -340,7 +340,7 @@
                   </div>
                 </div>
 
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first: ml-0" id="forecast-day-7">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-7">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
@@ -357,7 +357,7 @@
               </div>
 
               <div id="cape-town-container" class="city-forecast w-full h-full flex flex-row justify-between content-center overflow-x-auto">
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first: ml-0" id="forecast-day-1">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-1">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
@@ -372,7 +372,7 @@
                   </div>
                 </div>
 
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first: ml-0" id="forecast-day-2">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-2">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
@@ -387,7 +387,7 @@
                   </div>
                 </div>
 
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first: ml-0" id="forecast-day-3">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-3">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
@@ -402,7 +402,7 @@
                   </div>
                 </div>
 
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first: ml-0" id="forecast-day-4">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-4">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
@@ -417,7 +417,7 @@
                   </div>
                 </div>
 
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first: ml-0" id="forecast-day-5">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-5">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
@@ -432,7 +432,7 @@
                   </div>
                 </div>
 
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first: ml-0" id="forecast-day-6">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-6">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
@@ -447,7 +447,7 @@
                   </div>
                 </div>
 
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first: ml-0" id="forecast-day-7">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0  bg-forecastColor rounded-md text-center overflow-hidden first:ml-0" id="forecast-day-7">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold text-6xl justify-self-center self-center" id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col justify-center gap-1.5 h-full" id="forecast-temp">
@@ -473,12 +473,12 @@
             <div class="popup-forecast-container w-full h-full flex flex-col justify-between" id="popup-forecast-container">
               <div class="popup-header flex w-full flex-row justify-between items-center">
                 <h2 class="section-header p-0 m-0 text-white text-xl font-semibold">Custom location</h2>
-                <i class="fa-solid fa-circle-xmark text-white text-2xl hover: cursor-pointer" id="close-popup-button"></i>
+                <i class="fa-solid fa-circle-xmark text-white text-2xl hover:cursor-pointer" id="close-popup-button"></i>
               </div>
 
               <h4 class="popup-forecast-header text-lg">7-day Forecast</h4>
               <div id="custom-container" class="city-forecast w-full h-4/5 flex flex-row justify-between content-cenet overflow-x-auto">
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0 bg-popupForecastCardColor rounded text-center overflow-hidden first: ml-0" id="forecast-day-1">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0 bg-popupForecastCardColor rounded text-center overflow-hidden first:ml-0" id="forecast-day-1">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold justify-self-center " id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col gap-1.5 h-full justify-center" id="forecast-temp">
@@ -493,7 +493,7 @@
                   </div>
                 </div>
 
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0 bg-popupForecastCardColor rounded text-center overflow-hidden first: ml-0" id="forecast-day-2">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0 bg-popupForecastCardColor rounded text-center overflow-hidden first:ml-0" id="forecast-day-2">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold justify-self-center " id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col gap-1.5 h-full justify-center" id="forecast-temp">
@@ -508,7 +508,7 @@
                   </div>
                 </div>
 
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0 bg-popupForecastCardColor rounded text-center overflow-hidden first: ml-0" id="forecast-day-3">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0 bg-popupForecastCardColor rounded text-center overflow-hidden first:ml-0" id="forecast-day-3">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold justify-self-center " id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col gap-1.5 h-full justify-center" id="forecast-temp">
@@ -523,7 +523,7 @@
                   </div>
                 </div>
 
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0 bg-popupForecastCardColor rounded text-center overflow-hidden first: ml-0" id="forecast-day-4">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0 bg-popupForecastCardColor rounded text-center overflow-hidden first:ml-0" id="forecast-day-4">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold justify-self-center " id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col gap-1.5 h-full justify-center" id="forecast-temp">
@@ -538,7 +538,7 @@
                   </div>
                 </div>
 
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0 bg-popupForecastCardColor rounded text-center overflow-hidden first: ml-0" id="forecast-day-5">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0 bg-popupForecastCardColor rounded text-center overflow-hidden first:ml-0" id="forecast-day-5">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold justify-self-center " id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col gap-1.5 h-full justify-center" id="forecast-temp">
@@ -553,7 +553,7 @@
                   </div>
                 </div>
 
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0 bg-popupForecastCardColor rounded text-center overflow-hidden first: ml-0" id="forecast-day-6">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0 bg-popupForecastCardColor rounded text-center overflow-hidden first:ml-0" id="forecast-day-6">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold justify-self-center " id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col gap-1.5 h-full justify-center" id="forecast-temp">
@@ -568,7 +568,7 @@
                   </div>
                 </div>
 
-                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0 bg-popupForecastCardColor rounded text-center overflow-hidden first: ml-0" id="forecast-day-7">
+                <div class="daily-forecast-container h-full grid justify-evenly items-center mx-2 my-0 bg-popupForecastCardColor rounded text-center overflow-hidden first:ml-0" id="forecast-day-7">
                   <div class="forecast-item-info text-white text-xl m-0 p-0" id="forecast-date"></div>
                   <div class="forecast-item-info font-semibold justify-self-center " id="forecast-weather"></div>
                   <div class="forecast-item-info text-white text-base m-0 p-0 flex flex-col gap-1.5 h-full justify-center" id="forecast-temp">
@@ -590,7 +590,7 @@
         <div class="map-container w-full h-1/2 flex flex-col justify-evenly">
           <div class="map-header flex flex-row w-full items-center justify-between">
             <h2 class="section-header p-0 m-0 text-white text-xl font-semibold">Global Map</h2>
-            <div id="reset-map-button" class="reset-map-button bg-popupColor outline-none border-none text-center text-nowrap rounded-3xl w-fit px-8 py-2 hover: cursor-pointer">
+            <div id="reset-map-button" class="reset-map-button bg-popupColor outline-none border-none text-center text-nowrap rounded-3xl w-fit px-8 py-2 hover:cursor-pointer">
               <p class="text-white m-0">Reset Map</p>
             </div>
           </div>

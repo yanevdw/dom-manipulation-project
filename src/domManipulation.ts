@@ -95,7 +95,7 @@ export function displayWeatherForecast(
   const containerID = `${location}-container`;
   const cityForecast = document.getElementById(containerID);
 
-  if (cityForecast != null) {
+  if (cityForecast) {
     const cityDailyForecast = cityForecast.getElementsByClassName(
       "daily-forecast-container"
     );

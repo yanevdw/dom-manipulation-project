@@ -1,6 +1,6 @@
 # DOM Manipulation and Maps Project - Part 2
 
-This repository serves/contains as the second part of the DOM Manipulation and Maps Project
+This repository serves as and contains the second part of the DOM Manipulation and Maps Project.
 
 ## Changes Made
 
